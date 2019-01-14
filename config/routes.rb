@@ -6,4 +6,5 @@ Rails.application.routes.draw do
   get 'contact', to: 'staticpages#contact'
   get 'about', to: 'staticpages#about'
   resources :users
+  resources :decks
 end
