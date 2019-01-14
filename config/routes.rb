@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   get 'about', to: 'staticpages#about'
   resources :users
   resources :decks
+  resources :cards
 end

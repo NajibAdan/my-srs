@@ -1,4 +1,5 @@
 class DecksController < ApplicationController
+    before_action :authenticate_user!
     def new 
         @deck = Deck.new
     end

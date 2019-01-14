@@ -1,0 +1,32 @@
+<div>
+<h1><%=Deck.find(params[:deck_id]).name%> </h1>
+<%if @cards.blank?%>
+    <p> No cards in this deck. Do you want to <%= link_to 'Create', new_card_path %> one? </p>
+<%else%>
+<table>
+    <thead>
+        <tr>
+            <th scope='col'>Card </th>
+            <th scope='col'>Front </th>
+            <th scope='col'>Back </th>
+            <th scope='col'>Day to study</th>
+        </tr>
+    </thead>
+    <tbody> 
+        <%@cards.each do |card|%>
+            <tr>
+                <td> <%= link_to card.id, edit_card_path(card) %> </td>
+                <td> <%=card.front%> </td>
+                <td> <%=card.back%> </td>
+                <%if card.day_to_study.blank?%>
+                    <td> You haven't studied this card yet </td>
+                <%else%>
+                    <td> <%=card.day_to_study%> </td>
+                <%end%>
+                <td> <%= link_to 'Delete?', card_path(card), method: :delete %> </td>
+            </tr>
+        <%end%>
+    </tbody>
+</table>
+<%end%>
+</div>

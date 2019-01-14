@@ -10,7 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_14_055157) do
+ActiveRecord::Schema.define(version: 2019_01_14_070024) do
+
+  create_table "cards", force: :cascade do |t|
+    t.text "front"
+    t.text "back"
+    t.integer "deck_id"
+    t.integer "interval", default: 1
+    t.integer "ease", default: 250
+    t.integer "status"
+    t.date "day_to_study"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "decks", force: :cascade do |t|
     t.string "name"

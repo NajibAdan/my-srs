@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  front: MyText
+  back: MyText
+  deck_id: 1
+  interval: 1
+  ease: 1
+  status: 1
+
+two:
+  front: MyText
+  back: MyText
+  deck_id: 1
+  interval: 1
+  ease: 1
+  status: 1

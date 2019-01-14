@@ -1,5 +1,9 @@
-<h1><%=@deck.name%></h1>
-<p><%=@deck.description%></p>
-<p>Number of cards </p>
-<p>Number of cards to be studied today </p>
-<p>Some stats about the deck </p>
+<div>
+    <h1><%=@deck.name%></h1>
+    <p><%=@deck.description%></p>
+    <p>Number of cards: <%=@deck.cards.count%> </p>
+    <p>Number of cards to be studied today </p>
+    <p>Some stats about the deck </p>
+    <%= link_to 'Want to checkout the cards?', cards_path(deck_id: @deck.id) %>
+    <%= link_to 'Add a card', new_card_path(id: @deck.id) %>
+</div>
