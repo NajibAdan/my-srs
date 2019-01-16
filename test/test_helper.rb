@@ -7,4 +7,11 @@ class ActiveSupport::TestCase
   fixtures :all
 
   # Add more helper methods to be used by all tests here...
+  include ApplicationHelper
+  def login(user)
+    post user_session_path, 'user[email]' => user.email, 'user[password]' => user.password
+  end
+  def is_signed_in?
+    !session[:user_id].nil?
+  end
 end

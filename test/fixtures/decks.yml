@@ -1,11 +1,10 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
-  description: MyText
-  user_id: 1
+japan:
+  name: nip
+  description: nip nip nip 
+  user: blade 
 
-two:
-  name: MyString
-  description: MyText
-  user_id: 1
+chink:
+  name: chink 
+  user: blake

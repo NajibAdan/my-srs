@@ -6,5 +6,5 @@ class User < ApplicationRecord
 
   validates :username, presence: true, uniqueness: { case_sensitive: false }, length: {maximum: 50}
   validates :email, presence: true, length: {maximum: 255}
-  has_many :decks
+  has_many :decks, dependent: :destroy
 end

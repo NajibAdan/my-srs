@@ -1,5 +1,6 @@
 class DecksController < ApplicationController
     before_action :authenticate_user!
+    before_action :correct_user, only: [:destroy, :edit]
     def new 
         @deck = Deck.new
     end
@@ -10,7 +11,7 @@ class DecksController < ApplicationController
             flash[:success] = "Deck created!"
             redirect_to decks_url
         else
-            flash[:notice] = 'SOMETHING WRONG HAS HAPPENED'
+            flash[:notice].now = 'SOMETHING WRONG HAS HAPPENED'
             render 'new'
         end
     end
@@ -25,7 +26,7 @@ class DecksController < ApplicationController
             flash[:success] = 'Deck updated!'
             redirect_to @deck
         else
-            flash[:notice].error = 'Something terrible has happened'
+            flash[:notice].now = 'Something terrible has happened'
             render 'edit'
         end
     end
@@ -39,12 +40,20 @@ class DecksController < ApplicationController
     end
 
     def destroy 
-        @deck = current_user.decks.find(params[:id])
+        @deck = Deck.find(params[:id])
         @deck.destroy
         redirect_to action: "index"
     end
     private 
     def deck_params
         params.require(:deck).permit(:name,:description)
+    end
+
+    def correct_user 
+        @deck = current_user.decks.find_by(id: params[:id])
+        if @deck.nil?
+            flash[:notice] = "Unauthorised action!"
+            redirect_to user_session_url 
+        end
     end
 end
