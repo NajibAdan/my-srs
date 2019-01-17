@@ -33,6 +33,7 @@ class DecksController < ApplicationController
 
     def show 
         @deck = current_user.decks.find(params[:id])
+        @study = @deck.study
     end
 
     def index 
@@ -43,6 +44,15 @@ class DecksController < ApplicationController
         @deck = Deck.find(params[:id])
         @deck.destroy
         redirect_to action: "index"
+    end
+
+    def study
+        @cards = Deck.find(params[:id]).study
+        respond_to do |format|
+            format.html
+            format.js
+            format.json{ render @cards.to_json}
+        end
     end
     private 
     def deck_params
