@@ -1,8 +1,18 @@
-<div class='card'>
-    <button id='answer'>Answer </button>
-</div>
-
-<script>
-    var button = document.querySelector('#answer')
-    var cards = <%%>
-</script>
+<%=form_for :card,remote: true do |f|%>
+    <%if @card.blank?%>
+        <p> No cards remaining </p>
+    <%else%>
+    <div id='test'>
+        <%=f.hidden_field :deck_id, value: @card.deck.id%>
+        <%=f.hidden_field :card_id, value: @card.id%>
+        <%=f.label :front,@card.front%>
+        <%=f.label :back,@card.back%>
+        <%=f.select(:status,options_for_select([
+                                        ['Easy',1],
+                                        ['Good',2],
+                                        ['Hard',3]
+        ]))%>
+        <%=f.submit 'check'%>
+    </div>
+    <%end%>
+<%end%>
