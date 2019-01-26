@@ -7,7 +7,7 @@ class UserTest < ActiveSupport::TestCase
   def setup 
     @user = users(:blank)
   end
-  test "A user should have a user name" do
+  test "A user should have a name" do
     user = User.new(email: Faker::Internet.email,
                     password: "password",
                     password_confirmation: "password")

@@ -1,13 +1,14 @@
 blade:
-  username: blade
+  name: blade
   email: blake@blake.org
   encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
+
 blake:
-  username: blake 
+  name: blake 
   email:    blade@blade.org
   encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
 
 blank:
-  username: blank 
+  name: blank 
   email:    blank@blank.org
   encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>

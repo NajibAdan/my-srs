@@ -21,6 +21,6 @@ class UserLoginTest < ActionDispatch::IntegrationTest
     login_as @user
     get user_path(@user)
 
-    assert_select 'p', text: "User: #{@user.username}"
+    assert_select 'p', text: "User: #{@user.name}"
   end
 end
