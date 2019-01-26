@@ -1,0 +1,2 @@
+class Back < ApplicationRecord
+end
