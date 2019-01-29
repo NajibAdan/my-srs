@@ -1,10 +1,15 @@
 <%=form_for @card do |f|%>
     <%=f.hidden_field :deck_id, value:params[:id]%>
-    <%=f.label :front%>
-    <%=f.text_area :front%>
-
-    <%=f.label :back%>
-    <%=f.text_area :back%>
-
+    
+    <%= fields_for :fronts_attributes do |front_form|%>
+        <%1.times do%>
+        <%=front_form.label :front%>
+        <%=front_form.text_field :text_field%> 
+        <%end%>
+    <%end%>
+    <%= fields_for :backs_attributes do |back_form|%>
+        <%=back_form.label :back%>
+        <%=back_form.text_field :text_field%>
+    <%end%>
     <%=f.submit yield(:button_text)%>
 <%end%>

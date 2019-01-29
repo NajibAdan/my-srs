@@ -10,4 +10,6 @@ Rails.application.routes.draw do
   resources :users
   resources :decks
   resources :cards
+  resources :fronts, except: [:show,:index]
+  resources :backs, except: [:show,:index]
 end

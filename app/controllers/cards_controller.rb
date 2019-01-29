@@ -7,8 +7,8 @@ class CardsController < ApplicationController
 
     def create 
         deck = current_user.decks.find(params[:card][:deck_id])
-        @card = deck.cards.build(card_params)
-        if @card.save 
+        @card = deck.cards.build()
+        if @card.save && @card.fronts.create(front_params) && @card.backs.create(back_params)
             flash[:success] = 'Card created!'
             redirect_to action: "index", deck_id: @card.deck.id
         else
@@ -23,7 +23,7 @@ class CardsController < ApplicationController
 
     def update 
         @card = Card.find(params[:id])
-        if @card.update_attributes(card_params)
+        if @card.update_attributes(fronts_attributes: [card_params[:fronts_attributes]])
             flash[:success] = "Update was successful"
             redirect_to action: "index", deck_id: @card.deck.id
         else
@@ -47,8 +47,16 @@ class CardsController < ApplicationController
             render 'index'
         end 
     end
+
+    def show
+        @card =  Card.find(params[:id])
+    end
     private 
-    def card_params
-        params.require(:card).permit(:front,:back)
+    def front_params
+        params.require(:fronts_attributes).permit(:text_field)
+    end
+
+    def back_params
+        params.require(:backs_attributes).permit(:text_field)
     end
 end

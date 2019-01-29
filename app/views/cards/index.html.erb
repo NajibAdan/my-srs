@@ -15,9 +15,9 @@
     <tbody> 
         <%@cards.each do |card|%>
             <tr>
-                <td> <%= link_to card.id, edit_card_path(card) %> </td>
-                <td> <%=card.front%> </td>
-                <td> <%=card.back%> </td>
+                <td> <%= link_to card.id, card_path(card) %> </td>
+                <td> <%=card.fronts.first.text_field%> </td>
+                <td> <%=card.backs.first.text_field%> </td>
                 <%if card.day_to_study.blank?%>
                     <td> You haven't studied this card yet </td>
                 <%else%>

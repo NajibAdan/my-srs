@@ -1,0 +1,10 @@
+<div>
+    <%@card.fronts.each do |front|%>
+        <%=front.text_field%>
+    <%end%>
+    <%= link_to 'New Front Field?', new_front_path(card_id: @card.id) %>
+    <%@card.backs.each do |back|%>
+        <%=back.text_field%>
+    <%end%>
+    <%= link_to 'New back field?', new_back_path(card_id: @card.id) %>
+</div>
