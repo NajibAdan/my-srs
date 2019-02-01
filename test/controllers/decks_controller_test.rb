@@ -22,7 +22,7 @@ class DecksControllerTest < ActionDispatch::IntegrationTest
     end
   end
 
-  test 'should redirect ' do 
+  test 'A user cant delete another users deck ' do 
     login_as users(:blake)
     assert_no_difference "Deck.count" do
       delete deck_path(@deck)
