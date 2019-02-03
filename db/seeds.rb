@@ -30,13 +30,11 @@ user.decks.count do |deck|
         card = deck.cards.create!(
             day_to_study: random_day.strftime("%d/%m/%Y")
         )
-        rand(1..4).times do
-            card.fronts.create!(
+           card.fronts.create!(
                 text_field: Faker::LeagueOfLegends.quote
             )
             card.backs.create!(
                 text_field: Faker::LeagueOfLegends.champion
             )
-        end
     end
 end
