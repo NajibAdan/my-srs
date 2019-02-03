@@ -33,8 +33,8 @@ class CardsController < ApplicationController
     end
 
     def index 
-        deck = current_user.decks.find(params[:deck_id])
-        @cards = deck.cards.all
+        @deck = current_user.decks.find(params[:deck_id])
+        @cards = @deck.cards.all
     end
 
     def destroy 
