@@ -10,6 +10,9 @@ class Deck < ApplicationRecord
 
     #Returns due cards
     def study
-        @study = self.cards.where(day_to_study: '',day_to_study: Date.today.strftime("%d/%m/%Y"))
+        @study = self.cards.where(
+            day_to_study: '',
+            day_to_study: Date.today.strftime("%d/%m/%Y")
+            ).order(Arel.sql('random()'))
     end
 end
