@@ -1,11 +1,10 @@
 <div class='container'>
 <div><span>Number of decks: <%=@decks.count%></span> </div>
 <div><%@decks.each do |deck|%>
-    <p> Deck name: <%= link_to deck.name, deck_path(deck) %> </p>
+    <p> Deck: <%= link_to deck.name, deck_path(deck) %> <%= link_to 'Edit', edit_deck_path(deck) %>
+        <%= link_to 'Delete', deck_path(deck), method: :delete,data: {confirm: "Are you sure?"}  %>
+    </p>
     <%if !deck.description.blank?%><p>Deck description: <%=deck.description%></p><%end%>
-    <p> Should show cards ready to be studied </p>
-    <p><%= link_to 'Edit the deck information', edit_deck_path(deck) %></p>
-    <p><%= link_to 'Delete the deck', deck_path(deck), method: :delete %></p>
     <p>_______________________________________</p>
 <%end%></div>
 

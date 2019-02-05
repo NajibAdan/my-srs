@@ -2,11 +2,11 @@
     <%if @card.blank?%>
         <p> No cards remaining </p>
     <%else%>
-    <div id='test'>
+    <div >
         <%=f.hidden_field :deck_id, value: @card.deck.id%>
         <%=f.hidden_field :card_id, value: @card.id%>
-        <p> Front: <%=f.label :front,@card.fronts.first.text_field%></p>
-        <p> Answer: <%=f.label :back,@card.backs.first.text_field%></p>
+        <p> <strong>Question: </strong><%=f.label :front,@card.fronts.first.text_field%></p>
+        <p> <strong>Answer: </strong> <%=f.label :back,@card.backs.first.text_field%></p>
         <%=f.select(:status,options_for_select([
                                         ['Easy',1],
                                         ['Good',2],
