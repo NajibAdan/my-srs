@@ -1,5 +1,6 @@
 class CardsController < ApplicationController
     before_action :authenticate_user!
+    before_action :correct_user, only: [:destroy]
     def new 
         deck = current_user.decks.find(params[:id])
         @card = deck.cards.new
@@ -58,5 +59,12 @@ class CardsController < ApplicationController
 
     def back_params
         params.require(:backs_attributes).permit(:text_field)
+    end
+    def correct_user 
+        @card = current_user.decks.find_by(id: params[:deck])
+        if @card.nil?
+            flash[:notice] = "Unauthorised action!"
+            redirect_to user_session_url 
+        end
     end
 end

@@ -3,7 +3,7 @@
 one:
   front: MyText
   back: MyText
-  deck_id: 1
+  deck: japan
   interval: 1
   ease: 1
   status: 1
@@ -11,7 +11,11 @@ one:
 two:
   front: MyText
   back: MyText
-  deck_id: 1
+  deck: chink
   interval: 1
   ease: 1
   status: 1
+
+test:
+  day_to_study: <%(Date.today + rand(0..2)).strftime("%d/%m/%Y")%>
+  deck: chink 
