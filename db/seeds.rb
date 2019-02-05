@@ -26,9 +26,8 @@ end
 # Fill the dummy decks with dummy values
 user.decks.count do |deck|
     4.times do
-        random_day = Date.today + rand(0..2)
         card = deck.cards.create!(
-            day_to_study: random_day.strftime("%d/%m/%Y")
+            day_to_study: (Date.today + rand(0..2)).strftime("%d/%m/%Y")
         )
            card.fronts.create!(
                 text_field: Faker::LeagueOfLegends.quote
