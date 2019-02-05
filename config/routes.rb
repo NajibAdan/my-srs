@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get 'contact', to: 'static_pages#contact'
   get 'about', to: 'static_pages#about'
   get 'study', to: 'decks#study'
-  post 'study', to: 'decks#test'
+  post 'study', to: 'decks#study_receiver'
   resources :users
   resources :decks
   resources :cards

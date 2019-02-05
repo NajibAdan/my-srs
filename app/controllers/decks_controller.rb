@@ -50,16 +50,13 @@ class DecksController < ApplicationController
         @card = Deck.find(params[:id]).study.first
     end
     
-    def test 
+    def study_receiver 
         set_interval(Card.find(params['card']['card_id']),params['card']['status'])
         redirect_to action: "study", id: params['card']['deck_id']
     end
     private 
     def deck_params
         params.require(:deck).permit(:name,:description)
-    end
-    def study_card (id)
-
     end
     def correct_user 
         @deck = current_user.decks.find_by(id: params[:id])
