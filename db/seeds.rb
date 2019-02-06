@@ -24,6 +24,7 @@ user = User.first
 end
 
 # Fill the dummy decks with dummy values
+User.current = user
 tags = []
 20.times do 
     tags.push(Faker::Company.buzzword)

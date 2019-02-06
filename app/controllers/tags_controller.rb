@@ -1,9 +1,9 @@
 class TagsController < ApplicationController
     def index
-        @tags = Tag.all
+        @tags = current_user.tags.all
     end
 
     def show
-        @tag = Tag.find_by(id: params[:id])
+        @tag = current_user.tags.find_by(id: params[:id])
     end
 end
