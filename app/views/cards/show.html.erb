@@ -10,4 +10,13 @@
        <span> <%=back.text_field%> </span>
     <%end%>
     <%= link_to 'New back field?', new_back_path(card_id: @card.id) %>
+
+    <p>
+    Tags:
+    <% @card.tags.each do |tag|%>
+        <%= link_to tag.name, tag_path(tag)%>
+    <% end %>
+   </p> 
+   <%= link_to 'Delete?', card_path(id: @card,deck: @card.deck), method: :delete,
+                        data: {confirm: "Are you sure?"} %>
 </div>

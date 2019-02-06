@@ -1,0 +1,30 @@
+<h1> Cards tagged with <%=@tag.name%> </h1>
+
+<table>
+    <thead>
+        <tr>
+            <th scope='col'>Card </th>
+            <th scope='col'>Front </th>
+            <th scope='col'>Back </th>
+            <th scope='col'>Day to study</th>
+            <th scope='col'> Deck </th>
+        </tr>
+    </thead>
+    <tbody> 
+        <%@tag.cards.each do |card|%>
+            <tr>
+                <%if card.deck.user==current_user%>
+                <td> <%= link_to card.id, card_path(card) %> </td>
+                <td> <%=card.fronts.first.text_field%> </td>
+                <td> <%=card.backs.first.text_field%> </td>
+                <%if card.day_to_study.blank?%>
+                    <td> You haven't studied this card yet </td>
+                <%else%>
+                    <td> <%=card.day_to_study%> </td>
+                <%end%>
+                <td> <%=card.deck.name%> </td>
+                <%end%>
+            </tr>
+        <%end%>
+    </tbody>
+</table>
