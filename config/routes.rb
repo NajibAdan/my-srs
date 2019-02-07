@@ -12,4 +12,5 @@ Rails.application.routes.draw do
   resources :cards
   resources :fronts, except: [:show,:index]
   resources :backs, except: [:show,:index]
+  resources :tags
 end

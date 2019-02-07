@@ -8,7 +8,7 @@ class CardsController < ApplicationController
 
     def create 
         deck = current_user.decks.find(params[:card][:deck_id])
-        @card = deck.cards.build()
+        @card = deck.cards.build(card_params)
         if @card.save && @card.fronts.create(front_params) && @card.backs.create(back_params)
             flash[:success] = 'Card created!'
             redirect_to action: "index", deck_id: @card.deck.id
@@ -53,6 +53,9 @@ class CardsController < ApplicationController
         @card =  Card.find(params[:id])
     end
     private 
+    def card_params
+        params.require(:card).permit(:tag_list)
+    end
     def front_params
         params.require(:fronts_attributes).permit(:text_field)
     end

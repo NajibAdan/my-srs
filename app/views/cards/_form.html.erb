@@ -11,5 +11,9 @@
         <%=back_form.label :back%>
         <%=back_form.text_field :text_field%>
     <%end%>
+    <p>
+        <%= f.label :tag_list %><br />
+        <%= f.text_field :tag_list %>
+    </p>
     <%=f.submit yield(:button_text)%>
 <%end%>
