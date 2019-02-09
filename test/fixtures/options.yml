@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  easyBonus: 1
+  newInterval: 1
+  intervalModifier: 1
+
+two:
+  easyBonus: 1
+  newInterval: 1
+  intervalModifier: 1

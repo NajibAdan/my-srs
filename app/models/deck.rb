@@ -7,7 +7,7 @@ class Deck < ApplicationRecord
 
     #Validations
     validates :name, presence: true
-
+    belongs_to :option
     #Returns due cards
     def study
         @study = self.cards.where(

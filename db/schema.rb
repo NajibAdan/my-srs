@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_06_070006) do
+ActiveRecord::Schema.define(version: 2019_02_09_070358) do
 
   create_table "backs", force: :cascade do |t|
     t.string "text_field"
@@ -31,12 +31,21 @@ ActiveRecord::Schema.define(version: 2019_02_06_070006) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "deck_options", force: :cascade do |t|
+    t.integer "easyBonus", default: 150
+    t.integer "newInterval", default: 50
+    t.integer "intervalModifier", default: 100
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "decks", force: :cascade do |t|
     t.string "name"
     t.text "description"
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "option_id"
   end
 
   create_table "fronts", force: :cascade do |t|
@@ -44,6 +53,15 @@ ActiveRecord::Schema.define(version: 2019_02_06_070006) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "card_id"
+  end
+
+  create_table "options", force: :cascade do |t|
+    t.string "name"
+    t.integer "easyBonus", default: 150
+    t.integer "newInterval", default: 50
+    t.integer "intervalModifier", default: 100
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "taggings", force: :cascade do |t|
