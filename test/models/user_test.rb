@@ -17,7 +17,7 @@ class UserTest < ActiveSupport::TestCase
   test "associated decks should be destroyed" do 
     @user.save
     assert_difference "Deck.count", 1 do
-      @user.decks.create(name: "test")
+      @user.decks.create(name: "test",option: options(:one))
     end
     assert_difference "Deck.count", -1 do
       @user.destroy

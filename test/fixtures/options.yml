@@ -4,8 +4,10 @@ one:
   easyBonus: 1
   newInterval: 1
   intervalModifier: 1
+  user: blake
 
 two:
   easyBonus: 1
   newInterval: 1
   intervalModifier: 1
+  user: blake

@@ -8,6 +8,8 @@ japan:
 chink:
   name: chink 
   user: blake
+  option: one
 
 nothing:
   name: nothingness
+  option: two
