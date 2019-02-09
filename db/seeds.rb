@@ -16,10 +16,20 @@ end
 
 #Creates a dummy deck for User 1
 user = User.first
-3.times do 
+user.options.create!(
+    name: "Original"
+)
+3.times do |i|
+    option =  user.options.create!(
+        name: "Wew #{i}",
+        easyBonus: rand(120..150), 
+        newInterval: rand(0..100), 
+        intervalModifier: rand(100..120)
+    )
     user.decks.create!(
         name: Faker::SwordArtOnline.item,
-        description: Faker::TheITCrowd.quote
+        description: Faker::TheITCrowd.quote,
+        option: option
     )
 end
 

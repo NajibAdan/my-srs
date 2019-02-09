@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_09_070358) do
+ActiveRecord::Schema.define(version: 2019_02_09_083238) do
 
   create_table "backs", force: :cascade do |t|
     t.string "text_field"
@@ -27,14 +27,6 @@ ActiveRecord::Schema.define(version: 2019_02_09_070358) do
     t.integer "ease", default: 250
     t.integer "status"
     t.date "day_to_study"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "deck_options", force: :cascade do |t|
-    t.integer "easyBonus", default: 150
-    t.integer "newInterval", default: 50
-    t.integer "intervalModifier", default: 100
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -62,6 +54,7 @@ ActiveRecord::Schema.define(version: 2019_02_09_070358) do
     t.integer "intervalModifier", default: 100
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
   end
 
   create_table "taggings", force: :cascade do |t|

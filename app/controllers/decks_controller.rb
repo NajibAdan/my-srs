@@ -6,12 +6,16 @@ class DecksController < ApplicationController
     end
 
     def create 
-        @deck = current_user.decks.build(deck_params)
+        @deck = current_user.decks.build(
+            option: Option.find_by(id: deck_params[:option]),
+            name: deck_params[:name],
+            description: deck_params[:description ]
+        )
         if @deck.save 
             flash[:success] = "Deck created!"
             redirect_to decks_url
         else
-            flash[:notice].now = 'SOMETHING WRONG HAS HAPPENED'
+            flash.now[:notice] = 'SOMETHING WRONG HAS HAPPENED'
             render 'new'
         end
     end
@@ -55,8 +59,11 @@ class DecksController < ApplicationController
         redirect_to action: "study", id: params['card']['deck_id']
     end
     private 
+    def options_params
+        params.require(:deck).permit(:option)
+    end
     def deck_params
-        params.require(:deck).permit(:name,:description)
+        params.require(:deck).permit(:name,:description,:option)
     end
     def correct_user 
         @deck = current_user.decks.find_by(id: params[:id])
@@ -66,15 +73,16 @@ class DecksController < ApplicationController
         end
     end
     def set_interval(card,response)
+        option = card.deck.option
         case response
         when '1'
-            next_interval = card.ease * card.interval * 1.2
+            next_interval = card.ease * card.interval * (option.easyBonus/100)
             new_ease = card.ease + 0.15
         when '3'
-            next_interval = (card.interval * 0.5) * card.interval
+            next_interval = (card.interval * (option.newInterval/100)) * card.interval
             new_ease = card.ease - 0.20
         else
-            next_interval = card.interval * card.ease
+            next_interval = card.interval * card.ease * (option.intervalModifier/100)
             new_ease = card.ease
         end
         day_to_study = Date.today + next_interval/100

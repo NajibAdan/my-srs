@@ -13,4 +13,5 @@ Rails.application.routes.draw do
   resources :fronts, except: [:show,:index]
   resources :backs, except: [:show,:index]
   resources :tags
+  resources :options
 end
