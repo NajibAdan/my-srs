@@ -8,7 +8,8 @@ class BacksController < ApplicationController
         if @back.save
             redirect_to card_url(card.id)
         else
-
+            flash[:notice] = 'Wrong file type. Please upload an image or audio'
+            redirect_to action: "new", card_id: card.id
         end
     end
     def delete
@@ -24,6 +25,6 @@ class BacksController < ApplicationController
     end
     private
     def back_params
-        params.require(:back).permit(:text_field)
+        params.require(:back).permit(:text_field,:media)
     end
 end

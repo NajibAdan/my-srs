@@ -45,11 +45,15 @@ user.decks.count do |deck|
             day_to_study: (Date.today + rand(0..2)).strftime("%d/%m/%Y"),
             tag_list: tags.sample(4).join(',')
         )
-           card.fronts.create!(
-                text_field: Faker::LeagueOfLegends.quote
-            )
-            card.backs.create!(
-                text_field: Faker::LeagueOfLegends.champion
-            )
+        card.fronts.create!(
+            text_field: Faker::LeagueOfLegends.quote
+        )
+        back = card.backs.create!(
+            text_field: Faker::LeagueOfLegends.champion
+        )
+        back.media.attach(
+            io: File.open("lib/seed_images/image_#{rand(0..9)}.jpg"), 
+            filename:"#{Faker::Lorem.word}.jpg"
+        )
     end
 end

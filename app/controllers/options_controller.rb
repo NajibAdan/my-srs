@@ -12,10 +12,11 @@ class OptionsController < ApplicationController
             flash[:success] = "Options created!"
             redirect_to options_url
         else
-            flash[:notice].now = 'SOMETHING WRONG HAS HAPPENED'
+            flash.now[:notice] = 'SOMETHING WRONG HAS HAPPENED'
             render 'new'
         end
     end
+    
      
     def destroy
         @option = Option.find(params[:id])

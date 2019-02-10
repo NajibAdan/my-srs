@@ -2,14 +2,17 @@
     <%=f.hidden_field :deck_id, value:params[:id]%>
     
     <%= fields_for :fronts_attributes do |front_form|%>
-        <%1.times do%>
         <%=front_form.label :front%>
         <%=front_form.text_field :text_field%> 
-        <%end%>
+        <%=front_form.label :media%>
+        <%=front_form.file_field :media%>
     <%end%>
+    <br>
     <%= fields_for :backs_attributes do |back_form|%>
         <%=back_form.label :back%>
         <%=back_form.text_field :text_field%>
+        <%=back_form.label :media%>
+        <%=back_form.file_field :media%>
     <%end%>
     <p>
         <%= f.label :tag_list %><br />
