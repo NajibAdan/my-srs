@@ -5,8 +5,20 @@
     <div >
         <%=f.hidden_field :deck_id, value: @card.deck.id%>
         <%=f.hidden_field :card_id, value: @card.id%>
-        <p> <strong>Question: </strong><%=f.label :front,@card.fronts.first.text_field%></p>
-        <p> <strong>Answer: </strong> <%=f.label :back,@card.backs.first.text_field%></p>
+        <p> <strong>Question: </strong>
+            <%if @card.fronts.first.media.attached?%>
+                <%= image_tag @card.fronts.first.media, size: "200x200"%>
+            <%else%>
+                <%=@card.fronts.first.text_field%>
+            <%end%>
+        </p>
+        <p> <strong>Answer: </strong> 
+            <%if @card.backs.first.media.attached?%>
+                <%= image_tag @card.backs.first.media, size: "200x200"%>
+            <%else%>
+                <%=@card.backs.first.text_field%>
+            <%end%>            
+        </p>
         <%=f.select(:status,options_for_select([
                                         ['Easy',1],
                                         ['Good',2],
