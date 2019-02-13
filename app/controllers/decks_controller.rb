@@ -48,7 +48,7 @@ class DecksController < ApplicationController
     def destroy 
         @deck = Deck.find(params[:id])
         if @deck.destroy
-            flash [:success] = "Deck destroyed!"
+            flash[:success] = "Deck destroyed!"
             redirect_to action: "index"
         end
     end
