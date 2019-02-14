@@ -3,4 +3,7 @@
 <%= link_to 'About', about_path%>
 <%if signed_in?%>
     <%= link_to 'Decks', decks_path %>
+    <%if current_user.admin?%>
+        <%= link_to 'Admin Dashboard', users_path %>
+    <%end%>
 <%end%>

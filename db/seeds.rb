@@ -3,7 +3,8 @@ User.create!(
     name: 'Foo Bar',
     email: 'foo@bar.com',
     password: 'password',
-    password_confirmation: 'password'
+    password_confirmation: 'password',
+    admin: true
 )
 5.times do 
     User.create!(

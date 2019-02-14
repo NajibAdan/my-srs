@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get 'about', to: 'static_pages#about'
   get 'study', to: 'decks#study'
   post 'study', to: 'decks#study_receiver'
+  match 'users/:id' => 'users#destroy', :via => :delete, :as => :admin_destroy_user
   resources :users
   resources :decks
   resources :cards
