@@ -12,3 +12,9 @@ blank:
   name: blank 
   email:    blank@blank.org
   encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
+
+big_guy:
+  name: admin
+  email:  admin@admin.org
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
+  admin: true
