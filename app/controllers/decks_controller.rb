@@ -58,7 +58,7 @@ class DecksController < ApplicationController
     end
     
     def study_receiver 
-        Card.find(params['card']['card_id']).set_interval(params['card']['status'])
+        Card.find(params['card']['card_id']).set_interval(params['commit'].downcase)
         redirect_to action: "study", id: params['card']['deck_id']
     end
 end

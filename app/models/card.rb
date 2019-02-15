@@ -26,10 +26,10 @@ class Card < ApplicationRecord
     def set_interval(response)
         option = self.deck.option
         case response
-        when '1'
+        when 'easy'
             next_interval = self.ease * self.interval * (option.easyBonus/100)
             new_ease = self.ease + 0.15
-        when '3'
+        when 'hard'
             next_interval = (self.interval * (option.newInterval/100)) * self.interval
             new_ease = self.ease - 0.20
         else

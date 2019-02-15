@@ -2,7 +2,7 @@
     <%if @card.blank?%>
         <p> No cards remaining </p>
     <%else%>
-    <div >
+    <div id='test'>
         <%=f.hidden_field :deck_id, value: @card.deck.id%>
         <%=f.hidden_field :card_id, value: @card.id%>
         <p> <strong>Question: </strong>
@@ -12,20 +12,29 @@
                 <%=@card.fronts.first.text_field%>
             <%end%>
         </p>
+        <button type='button' id='answer' onclick="reveal()" > Check answer </button>
+        <div id='reveal', style="visibility:hidden;">
         <p> <strong>Answer: </strong> 
             <%if @card.backs.first.media.attached?%>
                 <%= image_tag @card.backs.first.media, size: "200x200"%>
             <%else%>
                 <%=@card.backs.first.text_field%>
             <%end%>            
-        </p>
-        <%=f.select(:status,options_for_select([
-                                        ['Easy',1],
-                                        ['Good',2],
-                                        ['Hard',3]
-        ]))%>
-        <span>
-        <%=f.submit 'check'%>
+        </p> 
+        
+        <%=f.submit 'Easy'%>
+        <%=f.submit 'Good'%>
+        <%=f.submit 'Hard'%>
+        </div>
     </div>
     <%end%>
 <%end%>
+
+<script>
+    function reveal(){
+        back = document.querySelector('#reveal');
+        back.style.visibility = 'visible';
+        document.querySelector('#test').removeChild(document.querySelector('#answer'))
+    }
+
+</script>
