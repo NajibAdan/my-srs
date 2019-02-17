@@ -8,7 +8,6 @@ class BacksController < ApplicationController
         if @back.save
             redirect_to card_url(card.id)
         else
-            flash[:notice] = 'Wrong file type. Please upload an image or audio'
             redirect_to action: "new", card_id: card.id
         end
     end
@@ -22,6 +21,8 @@ class BacksController < ApplicationController
         if @back.update_attributes(back_params)
             flash[:success] = 'Back updated!'
             redirect_to @back.card
+        else
+            redirect_to action: "new", card_id: @back.card.id
         end
     end
 

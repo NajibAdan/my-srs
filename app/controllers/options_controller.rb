@@ -12,7 +12,6 @@ class OptionsController < ApplicationController
             flash[:success] = "Options created!"
             redirect_to options_url
         else
-            flash.now[:notice] = 'SOMETHING WRONG HAS HAPPENED'
             render 'new'
         end
     end

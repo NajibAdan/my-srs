@@ -16,7 +16,6 @@ class DecksController < ApplicationController
             flash[:success] = "Deck created!"
             redirect_to decks_url
         else
-            flash.now[:notice] = 'SOMETHING WRONG HAS HAPPENED'
             render 'new'
         end
     end
@@ -31,7 +30,6 @@ class DecksController < ApplicationController
             flash[:success] = 'Deck updated!'
             redirect_to @deck
         else
-            flash[:notice].now = 'Something terrible has happened'
             render 'edit'
         end
     end

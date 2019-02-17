@@ -14,7 +14,6 @@ class CardsController < ApplicationController
             flash[:success] = 'Card created!'
             redirect_to action: "index", deck_id: @card.deck.id
         else
-            flash.now[:notice] = 'SOMETHING WRONG HAS HAPPENED'
             render 'new'
         end
     end
@@ -29,7 +28,6 @@ class CardsController < ApplicationController
             flash[:success] = "Update was successful"
             redirect_to action: "index", deck_id: @card.deck.id
         else
-            flash.now[:notice] = 'SOMETHING WRONG HAS HAPPENED'
             render 'new'
         end
     end
@@ -44,9 +42,6 @@ class CardsController < ApplicationController
         if @card.destroy 
             flash[:sucess] = "Card destroyed"
             redirect_to action: "index", deck_id: @card.deck.id
-        else
-            flash[:notice] = "Something terrible has happened"
-            redirect_to @card
         end 
     end
 

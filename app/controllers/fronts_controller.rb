@@ -9,7 +9,6 @@ class FrontsController < ApplicationController
             flash[:success] = 'Front created!'
             redirect_to card_url(card.id)
         else
-            flash[:notice] = 'Wrong file type. Please upload an image or audio'
             redirect_to action: "new", card_id: card.id
         end
     end
@@ -24,6 +23,8 @@ class FrontsController < ApplicationController
         if @front.update_attributes(front_params)
             flash[:success] = 'Front updated!'
             redirect_to @front.card
+        else
+            render 'edit'
         end
     end
 
