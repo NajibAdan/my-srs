@@ -49,9 +49,7 @@ user.decks.count do |deck|
         card.fronts.create!(
             text_field: Faker::LeagueOfLegends.quote
         )
-        back = card.backs.create!(
-            text_field: Faker::LeagueOfLegends.champion
-        )
+        back = card.backs.create!()
         back.media.attach(
             io: File.open("lib/seed_images/image_#{rand(0..9)}.jpg"), 
             filename:"#{Faker::Lorem.word}.jpg"
