@@ -44,6 +44,7 @@ user.decks.count do |deck|
     4.times do
         card = deck.cards.create!(
             day_to_study: (Date.today + rand(0..2)).strftime("%d/%m/%Y"),
+            interval: 1,
             tag_list: tags.sample(4).join(',')
         )
         card.fronts.create!(

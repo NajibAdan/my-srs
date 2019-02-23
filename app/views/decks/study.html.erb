@@ -3,6 +3,7 @@
         <p> No cards remaining </p>
     <%else%>
     <div id='test'>
+        <p> <%=pluralize(@card.deck.study.count, "card")%> remaining</p>
         <%=f.hidden_field :deck_id, value: @card.deck.id%>
         <%=f.hidden_field :card_id, value: @card.id%>
         <p> <strong>Question: </strong>

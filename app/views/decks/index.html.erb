@@ -6,7 +6,7 @@
     </p>
     <%if !deck.description.blank?%><p>Deck description: <%=deck.description%></p><%end%>
     <%if !deck.study.count.zero?%>
-        <p> <%= link_to 'Study?', study_path(id: deck.id) %> </p>
+        <p> <%=pluralize(deck.study.count, "card")%> ready to be <%= link_to "studied", study_path(id: deck.id) %></p>
     <%else%>
         <p> No cards to study in this deck</p>
     <%end%>
