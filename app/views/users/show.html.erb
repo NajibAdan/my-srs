@@ -1,3 +1,5 @@
-<p> User: <%=@user.name%> </p>
-<%= link_to 'Decks', decks_path %>
-<br>
+<div>
+    <p> User: <%=@user.name%> </p>
+    <%= link_to 'Edit your profile', edit_user_registration_path %>
+    <br>
+</div>

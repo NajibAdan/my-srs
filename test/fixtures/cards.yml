@@ -17,5 +17,17 @@ two:
   status: 1
 
 test:
-  day_to_study: <%(Date.today + rand(0..2)).strftime("%d/%m/%Y")%>
+  day_to_study: <%=(Date.today + rand(0..2)).strftime("%d/%m/%Y")%>
   deck: chink 
+
+japan:
+  day_to_study: <%=Date.today.strftime("%d/%m/%Y")%>
+  deck: nothing
+
+another_one:
+  day_to_study: <%=Date.today.strftime("%d/%m/%Y")%>
+  deck: nothing
+
+another_one_:
+  day_to_study: <%=Date.today.strftime("%d/%m/%Y")%>
+  deck: nothing

@@ -1,15 +1,22 @@
 <%=form_for @card do |f|%>
     <%=f.hidden_field :deck_id, value:params[:id]%>
-    
     <%= fields_for :fronts_attributes do |front_form|%>
-        <%1.times do%>
+        <%=front_form.radio_button :radio1, :text, :checked => true%>
         <%=front_form.label :front%>
         <%=front_form.text_field :text_field%> 
-        <%end%>
+        <%=front_form.radio_button :radio1, :media%>
+        <%=front_form.label :media%>
+        <%=front_form.file_field :media, disabled: true, direct_upload: true%>
     <%end%>
+    <br>
+    
     <%= fields_for :backs_attributes do |back_form|%>
+        <%=back_form.radio_button :radio2, :text, :checked => true%>
         <%=back_form.label :back%>
         <%=back_form.text_field :text_field%>
+        <%=back_form.radio_button :radio2, :media%>
+        <%=back_form.label :media%>
+        <%=back_form.file_field :media, disabled: true%>
     <%end%>
     <p>
         <%= f.label :tag_list %><br />
@@ -17,3 +24,28 @@
     </p>
     <%=f.submit yield(:button_text)%>
 <%end%>
+
+<script>
+    $("#fronts_attributes_radio1_media").click(function() {
+        $("#fronts_attributes_text_field").prop("required", false);
+        $("#fronts_attributes_text_field").prop("disabled", true);
+        $("#fronts_attributes_media").prop("disabled", false);
+    });
+    $("#fronts_attributes_radio1_text").click(function() {
+        $("#fronts_attributes_media").prop("required", true);
+        $("#fronts_attributes_media").prop("disabled", true);
+        $("#fronts_attributes_text_field").prop("disabled",false);
+        $("#fronts_attributes_text_field").focus();
+    });
+    $("#backs_attributes_radio2_media").click(function() {
+        $("#backs_attributes_text_field").prop("required", false);
+        $("#backs_attributes_text_field").prop("disabled", true);
+        $("#backs_attributes_media").prop("disabled", false);
+    });
+    $("#backs_attributes_radio2_text").click(function() {
+        $("#backs_attributes_media").prop("required", true);
+        $("#backs_attributes_media").prop("disabled", true);
+        $("#backs_attributes_text_field").prop("disabled",false);
+        $("#backs_attributes_text_field").focus();
+    });
+</script>

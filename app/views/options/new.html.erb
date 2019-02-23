@@ -1,0 +1,15 @@
+<%=form_for @option do |f|%>
+    <%=f.label :name%>
+    <%=f.text_field :name, required: true%>
+    <br>
+    <%=f.label "Easy Bonus"%>
+    <%=f.number_field :easyBonus%>
+    <br>
+    <%=f.label "New Interval"%>
+    <%=f.number_field :newInterval%>
+    <br >
+    <%=f.label "Interval Modifier"%>
+    <%=f.number_field :intervalModifier %>
+    <br>
+    <%=f.submit "Create" %> 
+<%end%>

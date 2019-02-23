@@ -1,4 +1,5 @@
 class CardsController < ApplicationController
+    include CardsHelper
     before_action :authenticate_user!
     before_action :correct_user, only: [:destroy]
     def new 
@@ -13,7 +14,6 @@ class CardsController < ApplicationController
             flash[:success] = 'Card created!'
             redirect_to action: "index", deck_id: @card.deck.id
         else
-            flash[:notice] = 'Something terrible has happened'
             render 'new'
         end
     end
@@ -28,8 +28,7 @@ class CardsController < ApplicationController
             flash[:success] = "Update was successful"
             redirect_to action: "index", deck_id: @card.deck.id
         else
-            flash[:notice].now = "Something terrible has happened"
-            render 'edit'
+            render 'new'
         end
     end
 
@@ -43,31 +42,11 @@ class CardsController < ApplicationController
         if @card.destroy 
             flash[:sucess] = "Card destroyed"
             redirect_to action: "index", deck_id: @card.deck.id
-        else
-            flash[:notice].now = "Something terrible has happened"
-            render 'index'
         end 
     end
 
     def show
         @card =  Card.find(params[:id])
     end
-    private 
-    def card_params
-        params.require(:card).permit(:tag_list)
-    end
-    def front_params
-        params.require(:fronts_attributes).permit(:text_field)
-    end
-
-    def back_params
-        params.require(:backs_attributes).permit(:text_field)
-    end
-    def correct_user 
-        @card = current_user.decks.find_by(id: params[:deck])
-        if @card.nil?
-            flash[:notice] = "Unauthorised action!"
-            redirect_to user_session_url 
-        end
-    end
+    
 end

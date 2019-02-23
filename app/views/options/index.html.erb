@@ -1,0 +1,25 @@
+<div>
+<table>
+    <thead>
+        <tr>
+            <th scope='col'>Name </th>
+            <th scope='col'>Easy Bonus value </th>
+            <th scope='col'>New Interval value </th>
+            <th scope='col'>Interval Modifier value</th>
+        </tr>
+    </thead>
+    <tbody> 
+        <%@options.each do |option|%>
+            <tr> 
+                <td> <%= option.name %> </td>
+                <td> <%=option.easyBonus%> </td>
+                <td> <%=option.newInterval%> </td>
+                <td>  <%=option.intervalModifier%> </td>
+                <td> <%= link_to 'Delete?', option_path(option),  method: :delete,
+                        data: {confirm: "Are you sure?"} %> </td>
+            </tr>
+        <%end%>
+    </tbody>
+</table>
+<%= link_to 'Create one', new_option_path %>
+</div>

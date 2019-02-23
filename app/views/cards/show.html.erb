@@ -1,14 +1,27 @@
 <div>
     <strong> Front fields:</strong>
     <%@card.fronts.each do |front|%>
-       <span> <%=front.text_field%> </span>
+       <%if !front.media.attached?%>
+         <span> <%=front.text_field%> </span>
+      <%else%>
+         <%= image_tag front.media, size: "200x200", alt: front.text_field %> 
+      <%end%>
+      <%= link_to 'Edit', edit_front_path(front) %>
+      <%= link_to 'Delete', front_path(front), method: :delete,data: {confirm: "Are you sure?"} %>
     <%end%>
     <%= link_to 'New Front Field?', new_front_path(card_id: @card.id) %>
     <br>
     <strong> Back fields:</strong>
     <%@card.backs.each do |back|%>
-       <span> <%=back.text_field%> </span>
+      <%if !back.media.attached?%>
+         <span> <%=back.text_field%> </span>
+      <%else%>
+         <%= image_tag back.media, size: "200x200", alt: back.text_field %> 
+      <%end%>
+      <%= link_to 'Edit', edit_back_path(back) %>
+      <%= link_to 'Delete', back_path(back), method: :delete,data: {confirm: "Are you sure?"} %>
     <%end%>
+    <br>
     <%= link_to 'New back field?', new_back_path(card_id: @card.id) %>
 
     <p>

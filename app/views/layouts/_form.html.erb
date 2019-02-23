@@ -6,5 +6,9 @@
     <%=f.label :description%>
     <%=f.text_area :description%>
 
+    <%=f.label :options%>
+    <%=f.select :option, options_for_select(current_user.options.all.map{
+            |u| [u.name,u.id]
+        })%>
     <%=f.submit yield(:button_text) %>
 <%end%>

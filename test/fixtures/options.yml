@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  easyBonus: 150
+  newInterval: 50
+  intervalModifier: 100
+  user: blake
+
+two:
+  easyBonus: 130
+  newInterval: 10
+  intervalModifier: 110
+  user: blake

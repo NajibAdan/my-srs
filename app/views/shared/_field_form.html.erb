@@ -1,6 +1,39 @@
-<%=form_for object do |f|%>
-    <%=f.hidden_field :card_id, value:params[:card_id]%>
+<div><%=form_for object do |f|%>
+    <div class='field'>
+    <%= render 'shared/error_messages', object: f.object%>
+    <%=f.hidden_field :card_id, value:params[:card_id]%> 
+    <%=f.radio_button :radio, :text,:checked => (!object.text_field.nil? && !object.media.attached?) %>
     <%=f.label yield(:form_text)%>
-    <%=f.text_field :text_field%>
+    <%=f.text_field :text_field, :disabled => (object.text_field.nil? && object.media.attached?)%>
+    </div>
+    <div class='field'>
+    <%=f.radio_button :radio, :media, :checked =>(object.media.attached? && object.text_field.nil?)%>
+    <%=f.label :media%>
+    <%=f.file_field :media,:disabled => (!object.text_field.nil? && !object.media.attached?)%> </div>
     <%=f.submit yield(:button_text)%>
 <%end%>
+</div>
+<script>
+    $("#front_radio_text").click(function() {
+        $("#front_text_field").prop("required", true);
+        $("#front_text_field").prop("disabled", false);
+        $("#front_media").prop("disabled", true); 
+    });
+    $("#front_radio_media").click(function() {
+        $("#front_media").prop("required", true);
+        $("#front_media").prop("disabled", false);
+        $("#front_text_field").prop("disabled",true);
+        $("#front_text_field").focus();
+    });
+    $("#back_radio_text").click(function() {
+        $("#back_text_field").prop("required", true);
+        $("#back_text_field").prop("disabled", false);
+        $("#back_media").prop("disabled", true); 
+    });
+    $("#back_radio_media").click(function() {
+        $("#back_media").prop("required", true);
+        $("#back_media").prop("disabled", false);
+        $("#back_text_field").prop("disabled",true);
+        $("#back_text_field").focus();
+    });
+</script>
