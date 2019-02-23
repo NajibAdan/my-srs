@@ -2,7 +2,7 @@ require 'test_helper'
 
 class CardTest < ActiveSupport::TestCase
   def setup 
-    @cardOne = cards(:test)
+    @cardOne = cards(:japan)
     @cardTwo = cards(:one)
   end
 
@@ -21,5 +21,13 @@ class CardTest < ActiveSupport::TestCase
     assert_difference "Back.count", -1 do
       @cardTwo.destroy
     end
+  end
+
+  test 'Set interval works' do
+    day1 = @cardOne.day_to_study
+    @cardOne.set_interval('good')
+    assert_not day1==@cardOne.day_to_study
+    @cardTwo.set_interval('easy')
+    assert_not @cardTwo.interval > 250
   end
 end

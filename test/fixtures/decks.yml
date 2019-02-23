@@ -4,6 +4,7 @@ japan:
   name: nip
   description: nip nip nip 
   user: blade 
+  option: two
 
 chink:
   name: chink 
@@ -13,3 +14,7 @@ chink:
 nothing:
   name: nothingness
   option: two
+
+nothingness:
+  name: nothing
+  option: one

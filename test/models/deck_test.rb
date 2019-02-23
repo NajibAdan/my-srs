@@ -5,7 +5,8 @@ class DeckTest < ActiveSupport::TestCase
   #   assert true
   # end
   def setup 
-    @deck = decks(:nothing)
+    @deck = decks(:nothingness)
+    @nothing = decks(:nothing)
   end
 
   test "associated cards should be destroyed" do
@@ -18,5 +19,9 @@ class DeckTest < ActiveSupport::TestCase
     assert_difference "Card.count", -1 do
       @deck.destroy
     end
+  end
+
+  test 'study should provide a random card when called' do
+    assert_not @nothing.study.first == @nothing.study.first
   end
 end
