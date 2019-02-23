@@ -5,6 +5,11 @@
         <%= link_to 'Delete', deck_path(deck), method: :delete,data: {confirm: "Are you sure?"}  %>
     </p>
     <%if !deck.description.blank?%><p>Deck description: <%=deck.description%></p><%end%>
+    <%if !deck.study.count.zero?%>
+        <p> <%= link_to 'Study?', study_path(id: deck.id) %> </p>
+    <%else%>
+        <p> No cards to study in this deck</p>
+    <%end%>
     <p>_______________________________________</p>
 <%end%></div>
 
