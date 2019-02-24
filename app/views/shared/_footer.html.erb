@@ -1,9 +1,12 @@
-<%= link_to 'Home', root_path %>
-<%= link_to 'Contact', contact_path %>
-<%= link_to 'About', about_path%>
-<%if signed_in?%>
-    <%= link_to 'Decks', decks_path %>
-    <%if current_user.admin?%>
-        <%= link_to 'Admin Dashboard', users_path %>
-    <%end%>
-<%end%>
+<footer class="footer">
+    <nav>
+    <ul><li><%= link_to 'Home', root_path %></li>
+    <li><%= link_to 'Contact', contact_path %></li>
+    <li><%= link_to 'About', about_path%></li>
+    <%if signed_in?%>
+        <li><%= link_to 'Decks', decks_path %></li>
+        <%if current_user.admin?%>
+            <li><%= link_to 'Admin Dashboard', users_path %></li>
+        <%end%>
+    <%end%> </ul> </nav>
+</footer>
