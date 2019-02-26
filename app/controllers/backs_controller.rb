@@ -6,6 +6,7 @@ class BacksController < ApplicationController
         card = Card.find(params[:back][:card_id])
         @back = card.backs.build(back_params)
         if @back.save
+            flash[:success] = 'Back field created!'
             redirect_to card_url(card.id)
         else
             redirect_to action: "new", card_id: card.id
@@ -19,7 +20,7 @@ class BacksController < ApplicationController
         @back = Back.find(params[:id])
         @back.media.purge
         if @back.update_attributes(back_params)
-            flash[:success] = 'Back updated!'
+            flash[:success] = 'Back field updated!'
             redirect_to @back.card
         else
             redirect_to action: "new", card_id: @back.card.id

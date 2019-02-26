@@ -14,7 +14,7 @@ class UsersController < ApplicationController
     def destroy
         @user = User.find(params[:id])
         if @user.destroy
-            flash[:notice] = "#{@user.name} was deleted successfully"
+            flash[:success] = "#{@user.name} was deleted successfully"
             redirect_to action: "index"
         end
     end
@@ -26,7 +26,7 @@ class UsersController < ApplicationController
     def update
         @user = User.find(params[:id])
         if @user.update_attributes(user_params)
-            flash[:sucess] = "Profile updated"
+            flash[:success] = "Profile updated"
             redirect_to @user
         else
             render 'edit'

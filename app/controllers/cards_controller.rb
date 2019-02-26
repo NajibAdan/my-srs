@@ -40,7 +40,7 @@ class CardsController < ApplicationController
     def destroy 
         @card = Card.find(params[:id])
         if @card.destroy 
-            flash[:sucess] = "Card destroyed"
+            flash[:success] = "Card destroyed"
             redirect_to action: "index", deck_id: @card.deck.id
         end 
     end

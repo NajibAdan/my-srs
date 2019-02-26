@@ -6,7 +6,7 @@ class FrontsController < ApplicationController
         card = Card.find(params[:front][:card_id])
         @front = card.fronts.build(front_params)
         if @front.save
-            flash[:success] = 'Front created!'
+            flash[:success] = 'Front field created!'
             redirect_to card_url(card.id)
         else
             redirect_to action: "new", card_id: card.id
@@ -21,7 +21,7 @@ class FrontsController < ApplicationController
         @front = Front.find(params[:id])
         @front.media.purge
         if @front.update_attributes(front_params)
-            flash[:success] = 'Front updated!'
+            flash[:success] = 'Front field updated!'
             redirect_to @front.card
         else
             render 'edit'
