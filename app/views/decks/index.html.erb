@@ -1,18 +1,26 @@
 <div class='container'>
-<div><span>Number of decks: <%=@decks.count%></span> </div>
-<div><%@decks.each do |deck|%>
-    <p> Deck: <%= link_to deck.name, deck_path(deck) %> <%= link_to 'Edit', edit_deck_path(deck) %>
-        <%= link_to 'Delete', deck_path(deck), method: :delete,data: {confirm: "Are you sure?"}  %>
-    </p>
-    <%if !deck.description.blank?%><p>Deck description: <%=deck.description%></p><%end%>
-    <%if !deck.study.count.zero?%>
-        <p> <%=pluralize(deck.study.count, "card")%> ready to be <%= link_to "studied", study_path(id: deck.id) %></p>
-    <%else%>
-        <p> No cards to study in this deck</p>
-    <%end%>
-    <p>_______________________________________</p>
-<%end%></div>
-
-<%= link_to 'Create a new deck', new_deck_path %>
-<%= link_to 'Tags', tags_path %>
+  <h2>Number of decks: <%=@decks.count%></h2> 
+  <%@decks.each do |deck|%>
+    <div class="card text-center">
+      <div class="card-header">
+        <h3><%=deck.name%><h3>
+      </div>
+      <div class="card-body">
+        <%if !deck.description.blank?%>
+          <p class="card-text"><%=deck.description%></p>
+        <%end%>
+        <%= link_to 'View it', deck_path(deck), class:'btn btn-primary'  %>
+      </div>
+      <div class="card-footer text-muted">
+        <%if !deck.study.count.zero?%>
+          <%=pluralize(deck.study.count, "card")%> ready to be <%= link_to "studied", study_path(id: deck.id) %>
+        <%else%>
+          <p> No cards to study in this deck</p>
+        <%end%>
+    </div>
+  <%end%>
+  <%= link_to 'Create a new deck', new_deck_path,class:"badge badge-primary" %>
+  <%= link_to 'Tags', tags_path,class:"badge badge-primary" %>
 </div>
+  
+  

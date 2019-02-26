@@ -1,17 +1,21 @@
-<div><%=form_for object do |f|%>
-    <div class='field'>
-    <%= render 'shared/error_messages', object: f.object%>
-    <%=f.hidden_field :card_id, value:params[:card_id]%> 
-    <%=f.radio_button :radio, :text,:checked => (!object.text_field.nil? && !object.media.attached?) %>
-    <%=f.label yield(:form_text)%>
-    <%=f.text_field :text_field, :disabled => (object.text_field.nil? && object.media.attached?)%>
+<div class="row">
+    <%=form_for object do |f|%>
+    <div class="col-md-6 col-md-offset-3">
+      <%= render 'shared/error_messages', object: f.object%>
+      <%=f.hidden_field :card_id, value:params[:card_id]%> 
+      <%=f.radio_button :radio, :text,:checked => (!object.text_field.nil? && !object.media.attached?) %>
+      <%=f.label yield(:form_text)%>
+      <%=f.text_field :text_field, :disabled => (object.text_field.nil? && object.media.attached?), class: "form-control"%>
     </div>
-    <div class='field'>
-    <%=f.radio_button :radio, :media, :checked =>(object.media.attached? && object.text_field.nil?)%>
-    <%=f.label :media%>
-    <%=f.file_field :media,:disabled => (!object.text_field.nil? && !object.media.attached?)%> </div>
-    <%=f.submit yield(:button_text)%>
-<%end%>
+    <div class="col-md-6 col-md-offset-3">
+      <%=f.radio_button :radio, :media, :checked =>(object.media.attached? && object.text_field.nil?)%>
+      <%=f.label :media%>
+      <%=f.file_field :media,:disabled => (!object.text_field.nil? && !object.media.attached?), class: "form-control"%> 
+    </div>
+    <div class="col-md-6 col-md-offset-3">
+      <%=f.submit yield(:button_text), class: "btn btn-primary" %>
+    </div>
+  <%end%>
 </div>
 <script>
     $("#front_radio_text").click(function() {
