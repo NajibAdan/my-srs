@@ -1,8 +1,13 @@
 <h1> List of tags </h1>
-<ul>
-    <%@tags.each do |tag|%>
-        <li>
-            <%= link_to tag.name, tag_path(tag) %>
-        </li>
-    <%end%>
-</ul>
+<div class='container'>
+  <div class='col-md-4 col-md-offset-4'>
+    <ul class="list-group">
+        <%@tags.each do |tag|%>
+            <li class="list-group-item">
+                <span class="badge"><%=tag.cards.count%></span>
+                <%= link_to tag.name, tag_path(tag) %>
+            </li>
+        <%end%>
+    </ul>
+  </div
+></div>
