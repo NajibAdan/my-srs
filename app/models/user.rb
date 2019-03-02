@@ -15,4 +15,20 @@ class User < ApplicationRecord
   def self.current=(user)
     Thread.current[:user] = user
   end
+
+  def cards_studied
+    sum = 0
+    self.decks.each do |deck|
+      sum+= deck.studied
+    end
+    return sum
+  end
+
+  def cards_to_be_studied
+    sum = 0
+    self.decks.each do |deck|
+      sum+= deck.study.count
+    end
+    return sum
+  end
 end

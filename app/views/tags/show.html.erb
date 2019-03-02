@@ -34,7 +34,7 @@
               <td> <%=card.day_to_study%> </td>
             <%end%>
             <td> <%= link_to 'Delete?', card_path(id: card,deck: card.deck), method: :delete,
-                    data: {confirm: "Are you sure?"} %> </td>
+                    data: {confirm: "Are you sure?"}, class:'alert-danger' %> </td>
           </tr>
         <%end%>
     </tbody>

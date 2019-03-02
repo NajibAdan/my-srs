@@ -23,12 +23,13 @@
                   <%else%>
                       <%=@card.backs.first.text_field%>
                   <%end%>            
-              </p>             
-              <div class="btn-group btn-group-sm" role="group" >
+              </p>
+              <div class="col-md-6 col-md-offset-3">     
+              <div class="btn-group btn-group-lg" role="group">
                 <%=f.submit 'Easy', class: "btn btn-primary"%>
                 <%=f.submit 'Good', class: "btn btn-primary"%>
                 <%=f.submit 'Hard', class: "btn btn-primary"%> 
-              </div>
+              </div></div>
             </div>
         </div>
         <%end%>

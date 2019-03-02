@@ -3,10 +3,12 @@
   <div class='col-md-4 col-md-offset-4'>
     <ul class="list-group">
         <%@tags.each do |tag|%>
+          <%if tag.cards.count > 0%>
             <li class="list-group-item">
                 <span class="badge"><%=tag.cards.count%></span>
                 <%= link_to tag.name, tag_path(tag) %>
             </li>
+          <%end%>
         <%end%>
     </ul>
   </div

@@ -15,4 +15,10 @@ class Deck < ApplicationRecord
             day_to_study: Date.today.strftime("%d/%m/%Y"))
             ).order(Arel.sql('random()'))
     end
+
+    def studied
+        self.cards.where(
+            "day_to_study > ?",Date.today.strftime("%d/%m/%Y"))
+        .count
+    end
 end

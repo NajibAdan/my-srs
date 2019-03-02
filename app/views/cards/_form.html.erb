@@ -1,30 +1,33 @@
-<%=form_for @card do |f|%>
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+    <%=form_for @card do |f|%>
     <%=f.hidden_field :deck_id, value:params[:id]%>
+    <label> Front </label>
     <%= fields_for :fronts_attributes do |front_form|%>
-        <%=front_form.radio_button :radio1, :text, :checked => true%>
-        <%=front_form.label :front%>
-        <%=front_form.text_field :text_field%> 
+        <%=front_form.radio_button :radio1, :text, :checked => true, class: 'form-control'%>
+        <%=front_form.label :text_field%>
+        <%=front_form.text_field :text_field, class: 'form-control'%> 
         <%=front_form.radio_button :radio1, :media%>
         <%=front_form.label :media%>
-        <%=front_form.file_field :media, disabled: true, direct_upload: true%>
+        <%=front_form.file_field :media, disabled: true, direct_upload: true, class: 'form-control'%>
     <%end%>
-    <br>
-    
+    <label> Back </label>
     <%= fields_for :backs_attributes do |back_form|%>
-        <%=back_form.radio_button :radio2, :text, :checked => true%>
-        <%=back_form.label :back%>
-        <%=back_form.text_field :text_field%>
-        <%=back_form.radio_button :radio2, :media%>
+        <%=back_form.radio_button :radio2, :text, :checked => true, class: 'form-control'%>
+        <%=back_form.label :text_field%>
+        <%=back_form.text_field :text_field, class: 'form-control'%>
+        <%=back_form.radio_button :radio2, :media, class: 'form-control'%>
         <%=back_form.label :media%>
-        <%=back_form.file_field :media, disabled: true%>
+        <%=back_form.file_field :media, disabled: true, class: 'form-control'%>
     <%end%>
     <p>
         <%= f.label :tag_list %><br />
-        <%= f.text_field :tag_list %>
+        <%= f.text_field :tag_list, class: 'form-control' %>
     </p>
-    <%=f.submit yield(:button_text)%>
+    <%=f.submit yield(:button_text), class: "btn btn-primary"%>
 <%end%>
-
+</div>
+</div>
 <script>
     $("#fronts_attributes_radio1_media").click(function() {
         $("#fronts_attributes_text_field").prop("required", false);

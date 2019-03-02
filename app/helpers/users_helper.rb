@@ -16,4 +16,12 @@ module UsersHelper
         @user =  User.find(params[:id])
         redirect_to root_url unless (@user==current_user || current_user.admin?)
     end
+
+    def card_count(user)
+        sum = 0
+        user.decks.each do |deck|
+            sum += deck.cards.count
+        end
+        return sum
+    end
 end

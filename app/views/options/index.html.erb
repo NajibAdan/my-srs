@@ -1,3 +1,4 @@
+<h1> List of deck options </h1>
 <div class  = 'row'>
 <table class="table table-bordered table-hover">
     <thead>
@@ -16,10 +17,12 @@
                 <td> <%=option.newInterval%> </td>
                 <td>  <%=option.intervalModifier%> </td>
                 <td> <%= link_to 'Delete?', option_path(option),  method: :delete,
-                        data: {confirm: "Are you sure?"} %> </td>
+                        data: {confirm: "Are you sure?"}, class:'alert-danger' %> </td>
             </tr>
         <%end%>
     </tbody>
 </table>
-<%= link_to 'Create one', new_option_path %>
+<div class = 'col-md-6  col-md-offset-4'>
+    <%= link_to 'Create one', new_option_path, class:'btn btn-primary'%>
+</div>            
 </div></div>

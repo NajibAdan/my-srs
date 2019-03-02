@@ -1,0 +1,27 @@
+<div class='container'><h3> Back Fields </h3>
+<table class="table table-bordered table-hover">
+  <thead>
+    <tr>
+      <th scope='col'>Card </th>
+      <th scope='col'>Back  </th>
+    </tr>
+  </thead>
+  <tbody> 
+    <%@card.backs.each do |back|%>
+      <tr>
+        <td> <%= link_to back.id, edit_back_path(back) %> </td>
+        <td> 
+          <%if back.media.attached?%>
+            <%= image_tag back.media, size: "100x100"%>
+          <%else%>
+            <%=back.text_field%>
+          <%end%>
+        </td>
+        <td> <%= link_to 'Delete?', card_path(id:back), method: :delete,
+                data: {confirm: "Are you sure?"}, class:'alert-danger' %> </td>
+      </tr>
+    <%end%>
+  </tbody>
+</table>
+<%= link_to 'New back field', new_back_path(card_id: @card.id),class:"badge badge-primary" %>
+</div>
