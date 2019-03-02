@@ -6,7 +6,7 @@ User.create!(
     password_confirmation: 'password',
     admin: true
 )
-5.times do 
+100.times do 
     User.create!(
         name: Faker::Name.name,
         email: Faker::Internet.email,
@@ -28,8 +28,8 @@ user.options.create!(
         intervalModifier: rand(100..120)
     )
     user.decks.create!(
-        name: Faker::SwordArtOnline.item,
-        description: Faker::TheITCrowd.quote,
+        name: Faker::JapaneseMedia::SwordArtOnline.item,
+        description: Faker::TvShows::TheITCrowd.quote,
         option: option
     )
 end
@@ -48,7 +48,7 @@ user.decks.count do |deck|
             tag_list: tags.sample(4).join(',')
         )
         card.fronts.create!(
-            text_field: Faker::LeagueOfLegends.quote
+            text_field: Faker::Games::LeagueOfLegends.quote
         )
         back = card.backs.create!()
         back.media.attach(
