@@ -21,6 +21,6 @@ class UserLoginTest < ActionDispatch::IntegrationTest
     login_as @user
     get user_path(@user)
 
-    assert_select 'p', text: "User: #{@user.name}"
+    assert_select 'h2', text: "#{@user.name}'s stats"
   end
 end
