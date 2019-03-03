@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
   devise_for :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
@@ -11,8 +13,8 @@ Rails.application.routes.draw do
   resources :users
   resources :decks
   resources :cards
-  resources :fronts, except: [:show,:index]
-  resources :backs, except: [:show,:index]
+  resources :fronts, except: %i[show index]
+  resources :backs, except: %i[show index]
   resources :tags
   resources :options
 end

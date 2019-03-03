@@ -1,7 +1,9 @@
-class Back < ApplicationRecord
-    #Relationship for Card
-    belongs_to :card
-    has_one_attached :media
+# frozen_string_literal: true
 
-    validates :media, blob: { content_type: ['image/jpeg', 'image/png','audio/mpeg']}
+class Back < ApplicationRecord
+  # Relationship for Card
+  belongs_to :card
+  has_one_attached :media
+
+  validates :media, blob: { content_type: ['image/jpeg', 'image/png', 'audio/mpeg'] }
 end
