@@ -3,14 +3,22 @@
     <div class="col-md-6 col-md-offset-3">
       <%= render 'shared/error_messages', object: f.object%>
       <%=f.hidden_field :card_id, value:params[:card_id]%> 
-      <%=f.radio_button :radio, :text,:checked => (!object.text_field.nil? && !object.media.attached?) %>
+      <div class='text'>
+      <div class="text-center"> 
+      <button class="btn btn-primary" type='button' id='media'>Click for a Media Field</button>
+      </div>
       <%=f.label yield(:form_text)%>
       <%=f.text_field :text_field, :disabled => (object.text_field.nil? && object.media.attached?), class: "form-control"%>
+      </div>
     </div>
     <div class="col-md-6 col-md-offset-3">
-      <%=f.radio_button :radio, :media, :checked =>(object.media.attached? && object.text_field.nil?)%>
+      <div class='media'>
+      <div class="text-center"> 
+      <button class="btn btn-primary" type='button' id='text'>Click for a Text Field</button>
+      </div>
       <%=f.label :media%>
       <%=f.file_field :media,:disabled => (!object.text_field.nil? && !object.media.attached?), class: "form-control"%> 
+      </div>
     </div>
     <div class="col-md-6 col-md-offset-3">
       <%=f.submit yield(:button_text), class: "btn btn-primary" %>
@@ -18,16 +26,20 @@
   <%end%>
 </div>
 <script>
-    $("#front_radio_text").click(function() {
+    $("#text").click(function() {
+        $('.text').show()
         $("#front_text_field").prop("required", true);
         $("#front_text_field").prop("disabled", false);
         $("#front_media").prop("disabled", true); 
+        $('.media').hide()
     });
-    $("#front_radio_media").click(function() {
+    $("#media").click(function() {
+        $('.media').show()
         $("#front_media").prop("required", true);
         $("#front_media").prop("disabled", false);
         $("#front_text_field").prop("disabled",true);
         $("#front_text_field").focus();
+        $('.text').hide()
     });
     $("#back_radio_text").click(function() {
         $("#back_text_field").prop("required", true);
