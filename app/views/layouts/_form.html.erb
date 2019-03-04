@@ -1,14 +1,18 @@
-<%=form_for @deck do |f|%>
-    <%=render 'shared/error_messages',object:f.object%>
-    <%=f.label :name%>
-    <%=f.text_field :name, required: true%>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%=form_for @deck do |f|%>
+        <%=render 'shared/error_messages',object:f.object%>
+        <%=f.label :name%>
+        <%=f.text_field :name, required: true, class: 'form-control'%>
 
-    <%=f.label :description%>
-    <%=f.text_area :description%>
+        <%=f.label :description%>
+        <%=f.text_area :description, class: 'form-control'%>
 
-    <%=f.label :options%>
-    <%=f.select :option, options_for_select(current_user.options.all.map{
-            |u| [u.name,u.id]
-        })%>
-    <%=f.submit yield(:button_text) %>
-<%end%>
+        <%=f.label :options%>
+        <%=f.select :option, options_for_select(current_user.options.all.map{
+                |u| [u.name,u.id]
+            }), class: 'form-control'%>
+        <%=f.submit yield(:button_text), class: "btn btn-primary" %>
+    <%end%>
+  </div>
+</div>

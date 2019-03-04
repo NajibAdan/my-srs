@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'test_helper'
 
 class UserLoginTest < ActionDispatch::IntegrationTest
@@ -5,10 +7,10 @@ class UserLoginTest < ActionDispatch::IntegrationTest
   def setup
     @user = users(:blank)
   end
-  test 'flash should not persist' do 
+  test 'flash should not persist' do
     get user_session_path
     assert_template 'devise/sessions/new'
-    post user_session_path params: {session: {email: '',password: ''}}
+    post user_session_path params: { session: { email: '', password: '' } }
     assert_template 'devise/sessions/new'
     assert_not flash.empty?
     get root_path
@@ -21,6 +23,6 @@ class UserLoginTest < ActionDispatch::IntegrationTest
     login_as @user
     get user_path(@user)
 
-    assert_select 'p', text: "User: #{@user.name}"
+    assert_select 'h2', text: "#{@user.name}'s stats"
   end
 end

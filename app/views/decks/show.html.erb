@@ -1,10 +1,10 @@
-<div>
+<div class='row'>
     <h1><%=@deck.name%></h1>
     <p><b>Description</b>: <em><%=@deck.description%></em></p>
     <p>Number of cards: <%=@deck.cards.count%> </p>
     <p>Deck Options: <%= link_to @deck.option.name,options_path  %> </p>
-    <%= link_to 'Want to checkout the cards?', cards_path(deck_id: @deck.id) %>
-    <%= link_to 'Add a card', new_card_path(id: @deck.id) %>
+    <%= link_to 'Want to checkout the cards?', cards_path(deck_id: @deck.id),class:"badge badge-primary"  %>
+    <%= link_to 'Add a card', new_card_path(id: @deck.id),class:"badge badge-primary" %>
     <%if @study.count > 0 %>
         <p> <%=pluralize(@deck.study.count, "card")%> ready to be <%= link_to "studied", study_path(id: @deck.id) %></p>
     <%end%>

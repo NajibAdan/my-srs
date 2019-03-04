@@ -1,36 +1,41 @@
-<%=form_for :card,remote: true do |f|%>
-    <%if @card.blank?%>
-        <p> No cards remaining </p>
-    <%else%>
-    <div id='test'>
-        <p> <%=pluralize(@card.deck.study.count, "card")%> remaining</p>
-        <%=f.hidden_field :deck_id, value: @card.deck.id%>
-        <%=f.hidden_field :card_id, value: @card.id%>
-        <p> <strong>Question: </strong>
-            <%if @card.fronts.first.media.attached?%>
-                <%= image_tag @card.fronts.first.media, size: "200x200"%>
-            <%else%>
-                <%=@card.fronts.first.text_field%>
-            <%end%>
-        </p>
-        <button type='button' id='answer' onclick="reveal()" > Check answer </button>
-        <div id='reveal', style="visibility:hidden;">
-        <p> <strong>Answer: </strong> 
-            <%if @card.backs.first.media.attached?%>
-                <%= image_tag @card.backs.first.media, size: "200x200"%>
-            <%else%>
-                <%=@card.backs.first.text_field%>
-            <%end%>            
-        </p> 
-        
-        <%=f.submit 'Easy'%>
-        <%=f.submit 'Good'%>
-        <%=f.submit 'Hard'%>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%=form_for :card,remote: true do |f|%>
+        <%if @card.blank?%>
+            <p> No cards remaining </p>
+        <%else%>
+        <div id='test'>
+            <p> <%=pluralize(@card.deck.study.count, "card")%> remaining</p>
+            <%=f.hidden_field :deck_id, value: @card.deck.id%>
+            <%=f.hidden_field :card_id, value: @card.id%>
+            <p> <strong>Question: </strong>
+                <%if @card.fronts.first.media.attached?%>
+                    <%= image_tag @card.fronts.first.media, size: "200x200"%>
+                <%else%>
+                    <%=@card.fronts.first.text_field%>
+                <%end%>
+            </p>
+            <button class="btn btn-primary" type='button' id='answer' onclick="reveal()"  > Check answer </button>
+            <div id='reveal', style="visibility:hidden;">
+              <p> <strong>Answer: </strong> 
+                  <%if @card.backs.first.media.attached?%>
+                      <%= image_tag @card.backs.first.media, size: "200x200"%>
+                  <%else%>
+                      <%=@card.backs.first.text_field%>
+                  <%end%>            
+              </p>
+              <div class="col-md-6 col-md-offset-3">     
+              <div class="btn-group btn-group-lg" role="group">
+                <%=f.submit 'Easy', class: "btn btn-primary"%>
+                <%=f.submit 'Good', class: "btn btn-primary"%>
+                <%=f.submit 'Hard', class: "btn btn-primary"%> 
+              </div></div>
+            </div>
         </div>
-    </div>
+        <%end%>
     <%end%>
-<%end%>
-
+  </div>
+</div>
 <script>
     function reveal(){
         back = document.querySelector('#reveal');

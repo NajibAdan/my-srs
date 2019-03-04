@@ -1,0 +1,31 @@
+AllCops:
+  Include:
+    - '**/Gemfile'
+    - '**/*.rb'
+  Exclude:
+    - 'db/**/*'     
+    - 'config/**/*'     
+    - 'script/**/*'
+    - 'bin/**/*'
+Documentation:
+  Enabled: false
+
+Metrics/MethodLength:   
+  Max: 15
+
+Metrics/AbcSize:
+  Max: 31
+
+Naming/AccessorMethodName:
+  Exclude:
+    - 'app/models/card.rb'
+Metrics/LineLength:
+  Max: 130
+Style/GuardClause:
+  Exclude:
+    - 'app/helpers/cards_helper.rb'
+    - 'app/helpers/decks_helper.rb'
+    - 'app/helpers/users_helper.rb'
+Style/ClassAndModuleChildren:
+  Exclude:
+    - 'test/test_helper.rb'

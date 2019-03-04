@@ -1,51 +1,76 @@
-<%=form_for @card do |f|%>
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+    <%=form_for @card do |f|%>
     <%=f.hidden_field :deck_id, value:params[:id]%>
     <%= fields_for :fronts_attributes do |front_form|%>
-        <%=front_form.radio_button :radio1, :text, :checked => true%>
-        <%=front_form.label :front%>
-        <%=front_form.text_field :text_field%> 
-        <%=front_form.radio_button :radio1, :media%>
+        <div id='frontText'>
+        <div class="text-center"> 
+        <button class="btn btn-primary" type='button' id='mediaFront'>Click for a Front Media Field</button>
+        </div>
+        <%=front_form.label :text_field%>
+        <%=front_form.text_field :text_field, class: 'form-control'%> 
+        </div>
+        <div id='frontMedia', style='display:none'>
+        <div class="text-center"> 
+        <button class="btn btn-primary" type='button' id='textFront'>Click for a Front Text Field</button>
+        </div>
         <%=front_form.label :media%>
-        <%=front_form.file_field :media, disabled: true, direct_upload: true%>
+        <%=front_form.file_field :media, disabled: true, direct_upload: true, class: 'form-control'%>
+        </div>
     <%end%>
-    <br>
-    
     <%= fields_for :backs_attributes do |back_form|%>
-        <%=back_form.radio_button :radio2, :text, :checked => true%>
-        <%=back_form.label :back%>
-        <%=back_form.text_field :text_field%>
-        <%=back_form.radio_button :radio2, :media%>
+        <div id='backText', style='display:none'>
+        <div class="text-center"> 
+        <button class="btn btn-primary" type='button' id='mediaBack'>Click for a Back Media Field</button>
+        </div>
+        <%=back_form.label :text_field%>
+        <%=back_form.text_field :text_field, class: 'form-control'%>
+        </div>
+        <div id='backMedia'>
+        <div class="text-center"> 
+        <button class="btn btn-primary" type='button' id='textBack'>Click for a Back Text Field</button>
+        </div>
         <%=back_form.label :media%>
-        <%=back_form.file_field :media, disabled: true%>
+        <%=back_form.file_field :media, disabled: true, class: 'form-control'%>
+        </div>
     <%end%>
     <p>
         <%= f.label :tag_list %><br />
-        <%= f.text_field :tag_list %>
+        <%= f.text_field :tag_list, class: 'form-control' %>
     </p>
-    <%=f.submit yield(:button_text)%>
+    <%=f.submit yield(:button_text), class: "btn btn-primary"%>
 <%end%>
-
+</div>
+</div>
 <script>
-    $("#fronts_attributes_radio1_media").click(function() {
+    $("#mediaFront").click(function() {
+        $("#frontMedia").show()
         $("#fronts_attributes_text_field").prop("required", false);
         $("#fronts_attributes_text_field").prop("disabled", true);
         $("#fronts_attributes_media").prop("disabled", false);
+        $("#frontText").hide()
     });
-    $("#fronts_attributes_radio1_text").click(function() {
+    $("#textFront").click(function() {
+        $("#frontText").show()
         $("#fronts_attributes_media").prop("required", true);
         $("#fronts_attributes_media").prop("disabled", true);
         $("#fronts_attributes_text_field").prop("disabled",false);
         $("#fronts_attributes_text_field").focus();
+        $("#frontMedia").hide()
     });
-    $("#backs_attributes_radio2_media").click(function() {
+    $("#mediaBack").click(function() {
+        $("#backMedia").show()
         $("#backs_attributes_text_field").prop("required", false);
         $("#backs_attributes_text_field").prop("disabled", true);
         $("#backs_attributes_media").prop("disabled", false);
+        $("#backText").hide()
     });
-    $("#backs_attributes_radio2_text").click(function() {
+    $("#textBack").click(function() {
+        $("#backText").show()
         $("#backs_attributes_media").prop("required", true);
         $("#backs_attributes_media").prop("disabled", true);
         $("#backs_attributes_text_field").prop("disabled",false);
         $("#backs_attributes_text_field").focus();
+        $("#backMedia").hide()
     });
 </script>

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 ENV['RAILS_ENV'] ||= 'test'
 require_relative '../config/environment'
 require 'rails/test_help'
@@ -11,7 +13,8 @@ class ActiveSupport::TestCase
   def login(user)
     post user_session_path, 'user[email]' => user.email, 'user[password]' => user.password
   end
-  def is_signed_in?
+
+  def signed_in?
     !session[:user_id].nil?
   end
 end

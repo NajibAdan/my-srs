@@ -3,44 +3,44 @@
 <%if @cards.blank?%>
     <p> No cards in this deck. Do you want to <%= link_to 'Create', new_card_path(id:@deck.id) %> one? </p>
 <%else%>
-<table>
-    <thead>
-        <tr>
-            <th scope='col'>Card </th>
-            <th scope='col'>Front </th>
-            <th scope='col'>Back </th>
-            <th scope='col'>Day to study</th>
-        </tr>
-    </thead>
-    <tbody> 
-        <%@cards.each do |card|%>
-            <tr>
-                <td> <%= link_to card.id, card_path(card) %> </td>
-                <td> 
-                    <%if card.fronts.first.media.attached?%>
-                        <%= image_tag card.fronts.first.media, size: "200x200"%>
-                    <%else%>
-                        <%=card.fronts.first.text_field%>
-                    <%end%>
-                </td>
-                <td> 
-                    <%if card.backs.first.media.attached?%>
-                        <%= image_tag card.backs.first.media, size: "200x200"%>
-                    <%else%>
-                        <%=card.backs.first.text_field%>
-                    <%end%>
-                </td>
-                <%if card.day_to_study.blank?%>
-                    <td> You haven't studied this card yet </td>
-                <%else%>
-                    <td> <%=card.day_to_study%> </td>
-                <%end%>
-                <td> <%= link_to 'Delete?', card_path(id: card,deck: card.deck), method: :delete,
-                        data: {confirm: "Are you sure?"} %> </td>
-            </tr>
+<table class="table table-bordered table-hover">
+  <thead>
+    <tr>
+      <th scope='col'>Card </th>
+      <th scope='col'>Front </th>
+      <th scope='col'>Back </th>
+      <th scope='col'>Day to study</th>
+    </tr>
+  </thead>
+  <tbody> 
+    <%@cards.each do |card|%>
+      <tr>
+        <td> <%= link_to card.id, card_path(card) %> </td>
+        <td> 
+          <%if card.fronts.first.media.attached?%>
+            <%= image_tag card.fronts.first.media, size: "100x100"%>
+          <%else%>
+            <%=card.fronts.first.text_field%>
+          <%end%>
+        </td>
+        <td> 
+          <%if card.backs.first.media.attached?%>
+            <%= image_tag card.backs.first.media, size: "100x100"%>
+          <%else%>
+            <%=card.backs.first.text_field%>
+          <%end%>
+        </td>
+        <%if card.day_to_study.blank?%>
+          <td> You haven't studied this card yet </td>
+        <%else%>
+          <td> <%=card.day_to_study%> </td>
         <%end%>
-    </tbody>
+        <td> <%= link_to 'Delete?', card_path(id: card,deck: card.deck), method: :delete,
+                data: {confirm: "Are you sure?"}, class:'alert-danger' %> </td>
+      </tr>
+    <%end%>
+  </tbody>
 </table>
-<p> Do you want to <%= link_to 'Add', new_card_path(id:@deck.id) %> a card to this deck? </p>
+<p> Do you want to <%= link_to 'Add', new_card_path(id:@deck.id) %> a card to <%=@deck.name%>? </p>
 <%end%>
 </div>

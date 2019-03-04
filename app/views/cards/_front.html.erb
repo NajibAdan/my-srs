@@ -1,0 +1,28 @@
+<div class='container'><h3> Front Fields </h3>
+<table class="table table-bordered table-hover">
+  <thead>
+    <tr>
+      <th scope='col'>Card </th>
+      <th scope='col'>Front </th>
+    </tr>
+  </thead>
+  <tbody> 
+    <%@card.fronts.each do |front|%>
+      <tr>
+        <td> <%= link_to front.id, edit_front_path(front) %> </td>
+        <td> 
+          <%if front.media.attached?%>
+            <%= image_tag front.media, size: "100x100"%>
+          <%else%>
+            <%=front.text_field%>
+          <%end%>
+        </td>
+        <td> <%= link_to 'Delete?', card_path(id: front), method: :delete,
+                data: {confirm: "Are you sure?"}, class:'alert-danger' %> </td>
+      </tr>
+    <%end%>
+  </tbody>
+</table>
+<%= link_to 'New Front Field', new_front_path(card_id: @card.id),class:"badge badge-primary" %>
+
+</div>
