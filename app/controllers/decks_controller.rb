@@ -42,7 +42,7 @@ class DecksController < ApplicationController
   end
 
   def index
-    @decks = current_user.decks.all
+    @decks = current_user.decks.paginate(page: params[:page], per_page: 10)
   end
 
   def destroy
