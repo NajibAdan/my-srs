@@ -77,3 +77,4 @@ gem 'bootstrap-will_paginate', '1.0.0'
 gem 'faker'
 gem 'rubocop', require: false
 gem 'will_paginate', '3.1.6'
+gem "aws-sdk-s3", require: false
