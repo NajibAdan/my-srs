@@ -8,7 +8,7 @@ User.create!(
   password_confirmation: 'password',
   admin: true
 )
-100.times do
+50.times do
   User.create!(
     name: Faker::Name.name,
     email: Faker::Internet.email,
@@ -43,7 +43,7 @@ tags = []
   tags.push(Faker::Company.buzzword)
 end
 user.decks.count do |deck|
-  5.times do
+  3.times do
     card = deck.cards.create!(
       day_to_study: (Date.today + rand(0..2)).strftime('%d/%m/%Y'),
       interval: 1,
