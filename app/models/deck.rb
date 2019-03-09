@@ -15,8 +15,8 @@ class Deck < ApplicationRecord
     @study = cards.where(
       day_to_study: nil
     ).or(cards.where(
-           day_to_study: Date.today.strftime('%d/%m/%Y')
-         )).or(cards.where("day_to_study <  ?",Date.today.strftime('%d/%m/%Y'))).order(Arel.sql('random()'))
+           day_to_study: Date.today
+         )).or(cards.where('day_to_study <  ?', Date.today)).order(Arel.sql('random()'))
   end
 
   def studied
