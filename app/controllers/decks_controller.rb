@@ -58,6 +58,12 @@ class DecksController < ApplicationController
 
   def study
     @card = Deck.find(params[:id]).study.first
+    if @card.blank?
+      flash[:success] = 'No cards remaining'
+      redirect_to decks_path
+    else
+      @card
+    end
   end
 
   def study_receiver
