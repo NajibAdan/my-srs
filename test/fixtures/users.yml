@@ -13,6 +13,11 @@ blank:
   email:    blank@blank.org
   encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
 
+some_weird_guy:
+  name: cray
+  email: <%= Faker::Internet.email %>
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
+  
 big_guy:
   name: admin
   email:  admin@admin.org

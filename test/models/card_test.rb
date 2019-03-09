@@ -4,8 +4,9 @@ require 'test_helper'
 
 class CardTest < ActiveSupport::TestCase
   def setup
-    @card_one = cards(:japan)
+    @card_one = cards(:luck)
     @card_two = cards(:one)
+    @setup_deck = decks(:japan)
   end
 
   test 'Associated fronts and backs should be destroyed' do
@@ -29,6 +30,11 @@ class CardTest < ActiveSupport::TestCase
     @card_one.set_interval('good')
     assert_not day1 == @card_one.day_to_study
     @card_two.set_interval('easy')
-    assert_not @card_two.interval > 250
+    assert_not @card_two.interval > 1
+  end
+
+  test 'a card should have atleast an interval of 1' do
+    test_card = @setup_deck.cards.create!
+    assert test_card.interval == 1
   end
 end

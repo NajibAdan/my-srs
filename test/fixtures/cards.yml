@@ -7,6 +7,7 @@ one:
   interval: 1
   ease: 1
   status: 1
+  day_to_study: <%=Date.today.strftime("%d/%m/%Y")%>
 
 two:
   front: MyText
@@ -16,18 +17,24 @@ two:
   ease: 1
   status: 1
 
+luck:
+  day_to_study: <%=Date.today.strftime("%d/%m/%Y")%>
+  deck: chink
+  interval: 1
+
 test:
   day_to_study: <%=(Date.today + rand(0..2)).strftime("%d/%m/%Y")%>
-  deck: chink 
+  deck: chink
+  interval: 1 
 
 japan:
   day_to_study: <%=Date.today.strftime("%d/%m/%Y")%>
   deck: nothing
+  interval: 1
 
-another_one:
+<%30.times do |i| %>
+card_<%=i%>:
+  interval: 1
   day_to_study: <%=Date.today.strftime("%d/%m/%Y")%>
   deck: nothing
-
-another_one_:
-  day_to_study: <%=Date.today.strftime("%d/%m/%Y")%>
-  deck: nothing
+<%end%>
