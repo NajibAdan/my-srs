@@ -38,3 +38,10 @@ card_<%=i%>:
   day_to_study: <%=Date.today.strftime("%d/%m/%Y")%>
   deck: nothing
 <%end%>
+
+<%10.times do |i|%>
+card_not_<%=i%>:
+  interval: 1
+  day_to_study: <%=Date.today + 3%>
+  deck: test
+<%end%>

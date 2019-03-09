@@ -20,3 +20,8 @@ nothingness:
   user: cray
   name: nothing
   option: one
+
+test:
+  user: cray
+  name: test
+  option: two

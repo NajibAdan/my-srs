@@ -49,7 +49,7 @@ class Card < ApplicationRecord
 
   def create_checks
     self.interval = 1
-    self.day_to_study = Date.today
+    day_to_study.nil? ? self.day_to_study = Date.today : day_to_study
     self.ease = 250
   end
 
