@@ -40,6 +40,7 @@ class Card < ApplicationRecord
       next_interval = interval * ease * (option.intervalModifier / 100)
       new_ease = ease
     end
+    next_interval < 100 ? next_interval = 100 : next_interval
     day = Date.today + next_interval / 100
     update_attributes!(day_to_study: day, interval: next_interval/100, ease: new_ease)
   end
@@ -49,6 +50,7 @@ class Card < ApplicationRecord
   def create_checks
     self.interval = 1
     self.day_to_study = Date.today
+    self.ease = 250
   end
 
   def update_checks
