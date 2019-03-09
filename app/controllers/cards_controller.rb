@@ -36,7 +36,7 @@ class CardsController < ApplicationController
 
   def index
     @deck = current_user.decks.find(params[:deck_id])
-    @cards = @deck.cards.all
+    @cards = @deck.cards.paginate(page: params[:page])
   end
 
   def destroy

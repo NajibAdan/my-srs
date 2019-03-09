@@ -3,13 +3,16 @@
 <%if @cards.blank?%>
     <p> No cards in this deck. Do you want to <%= link_to 'Create', new_card_path(id:@deck.id) %> one? </p>
 <%else%>
+  <% provide(:title, "Cards in #{@cards.first.deck.name}") %>
+<div class="text-center"> <%= will_paginate%> </div>
 <table class="table table-bordered table-hover">
   <thead>
     <tr>
       <th scope='col'>Card </th>
       <th scope='col'>Front </th>
       <th scope='col'>Back </th>
-      <th scope='col'>Day to study</th>
+      <th scope='col'>Interval </th>
+      <th scope='col'>Day to study</th>   
     </tr>
   </thead>
   <tbody> 
@@ -30,6 +33,7 @@
             <%=card.backs.first.text_field%>
           <%end%>
         </td>
+        <td><%=card.interval%> </td>
         <%if card.day_to_study.blank?%>
           <td> You haven't studied this card yet </td>
         <%else%>
@@ -41,6 +45,7 @@
     <%end%>
   </tbody>
 </table>
+<div class="text-center"> <%= will_paginate%> </div>
 <p> Do you want to <%= link_to 'Add', new_card_path(id:@deck.id) %> a card to <%=@deck.name%>? </p>
 <%end%>
 </div>
