@@ -37,9 +37,8 @@ class DecksControllerTest < ActionDispatch::IntegrationTest
       get study_path(id: @nothing.id)
       assert_response :success
       card_to_study = @nothing.study.first
-      post study_path, params: {card: {card_id: card_to_study.id,
-                                      deck_id: @nothing.id},commit: 'easy'
-                                      }
+      post study_path, params: { card: { card_id: card_to_study.id,
+                                         deck_id: @nothing.id }, commit: 'easy' }
       card_to_study.set_interval('easy')
       assert_redirected_to study_url(id: @nothing.id)
       assert card_to_study.day_to_study != Date.today

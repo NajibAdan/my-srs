@@ -42,7 +42,7 @@ class Card < ApplicationRecord
     end
     next_interval < 100 ? next_interval = 100 : next_interval
     day = Date.today + next_interval / 100
-    update_attributes!(day_to_study: day, interval: next_interval/100, ease: new_ease)
+    update_attributes!(day_to_study: day, interval: next_interval / 100, ease: new_ease)
   end
 
   private

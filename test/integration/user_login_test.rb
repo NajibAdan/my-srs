@@ -25,23 +25,23 @@ class UserLoginTest < ActionDispatch::IntegrationTest
 
     assert_select 'h2', text: "#{@user.name}'s stats"
   end
-  
-  test "login with valid credentials and logout" do 
+
+  test 'login with valid credentials and logout' do
     get user_path(@user)
     assert_redirected_to user_session_path
     follow_redirect!
     login_as @user
     get user_path(@user)
     assert_template 'users/show'
-    assert_select "a[href=?]", new_user_session_path, count: 0
-    assert_select "a[href=?]", destroy_user_session_path
-    assert_select "a[href=?]", user_path(@user)
+    assert_select 'a[href=?]', new_user_session_path, count: 0
+    assert_select 'a[href=?]', destroy_user_session_path
+    assert_select 'a[href=?]', user_path(@user)
     delete destroy_user_session_path
     assert_redirected_to root_url
     delete destroy_user_session_path
     follow_redirect!
-    assert_select "a[href=?]", new_user_session_path
-    assert_select "a[href=?]", destroy_user_session_path, count: 0
-    assert_select "a[href=?]", user_path(@user), count: 0
+    assert_select 'a[href=?]', new_user_session_path
+    assert_select 'a[href=?]', destroy_user_session_path, count: 0
+    assert_select 'a[href=?]', user_path(@user), count: 0
   end
 end
