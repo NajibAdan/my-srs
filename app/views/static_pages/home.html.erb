@@ -5,4 +5,7 @@
     subsequent reviews of the previously learned material in order to exploit the psychological
     spacing effect. The learning of a certain material is greater when the studying is spread over time
     as opposed to studying the same material in a single session.</p>
+    <%if !user_signed_in?%>
+        <%= link_to "Sign up now!", new_user_registration_path, class: "btn btn-lg btn-primary" %>
+    <%end%>
 </div>
