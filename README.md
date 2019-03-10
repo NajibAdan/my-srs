@@ -1,4 +1,4 @@
-# Final Year Project
+# Spaced Repetition System
 
 ## Introduction
 
@@ -14,4 +14,6 @@ You can check the app at [heroku](https://mysrs.herokuapp.com). It might take a 
 
 2. ```rails db:migrate && rails db:seed``` to seed the database with data
 
-3. ```rails server``` to launch the server and head to ```http://localhost:3000``` on your web browser
+3. Finally, run the test suite to verify that everything is working correctly: ```rails test```
+
+4. ```rails server``` to launch the server and head to ```http://localhost:3000``` on your web browser
