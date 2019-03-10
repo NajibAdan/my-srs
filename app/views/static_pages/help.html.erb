@@ -1,0 +1,72 @@
+<div>
+    <h1> Help Page </h1>
+    <ol>
+        <h3><li> Introduction </li></h3>
+        <p>
+        Spaced Repetition is a learning system that incorporates increasing interval time between
+        subsequent reviews of the previously learned material in order to exploit the psychological
+        spacing effect.
+        </p>
+        <p> Some terminologies that need to be explained: <br/>
+        <strong> Card: </strong> a card bearing information, as words or numbers, on either or both sides. 
+        One writes a question on a side and an answer overleaf. Flashcards can bear vocabulary, 
+        historical dates, formulae or any subject matter that can be learned via a question-and-answer format. 
+        Flashcards are widely used as a learning drill to aid memorization.
+        <br />
+        <strong> Deck: </strong> is a group of cards. 
+        You can place cards in different decks to study parts of your card 
+        collection instead of studying everything at once.
+        <br />
+        <strong> Tag: </strong> keyword or term assigned to a piece of information which 
+        helps describe an item and allows it to be found again by browsing or searching
+        </p>
+        <h3><li> User account </li></h3>
+        <p>
+        An account is required to use most of the site's functionality. You can <%= link_to "register", new_user_registration_path%>
+        if you don't have account or you can <%= link_to "login", new_user_session_path%> to your account.
+
+        If you've <%= link_to 'forgotten', new_user_password_path %> your password, 
+        you can recover it using the unlock instructions sent to your email.
+        </p>
+        <h3><li> Deck </li></h3>
+        <p>
+        A deck is a collection of cards. When <%= link_to 'creating', new_deck_path%> a deck you should at least give it a name and assign it 
+        a deck option. A deck option determines how soon you'll study the card. The default deck option is sufficient
+        unless you want granular control of your cards maturity.
+
+        This system allows you to share options between different decks, 
+        to make updating options in many decks at once easy.
+        </p>
+        <h3><li> Card </li></h3>
+        <p>
+        You can create more than one field for a card. The front fields is what you'll see on the front side of the 
+        card(the question) when studying and the back fields will be revealed after clicking 
+        <code>Check answer</code> button.
+        <br/>
+        Cards can be grouped together by tags which makes organizing and finding cards easier. 
+        You can leave the tags blank if you wish, or add one or more of them. Tags are separated by a comma.
+        If the tags area says <code>vocab,check_with_tutor</code> then the card you add would have two tags.
+        </p>
+        <h3><li> Studying </li></h3>
+        <p> When you have found a deck you like or entered some cards in, it’s time to start studying.</p>
+        <p>
+        When a card is shown, only the question is shown at first. After thinking about the answer 
+        click the <code>Check answer</code> button. The answer will then be shown. 
+        </p>
+        <p>
+        When the answer is shown, you should compare the answer you thought of with the answer which is shown 
+        and tell the system how well you remembered. There are four buttons to rate your answer:
+        </p>
+        <ul>
+        <li><b>Again:</b> marks your answer as incorrect and the card will be shown more frequently in the future.
+        </li>
+        <li><b>Hard:</b> tells the system to show the card more frequently in the future.
+        </li>
+        <li><b>Good:</b> tells the system that the last interval was about right, and the card 
+        easiness doesn’t need to be adjusted down or up.
+        </li>
+        <li><b>Easy:</b> tells system you found the interval too short. 
+        The card will be scheduled further into the future than Good</li>
+        </ul>
+    </ol>
+</div>
