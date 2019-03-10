@@ -1,5 +1,7 @@
+<% provide(:title, "Decks") %>
 <div class='container'>
   <h2>Number of decks: <%=@decks.count%></h2> 
+  <div class="text-center"> <%= will_paginate%> </div>
   <%@decks.each do |deck|%>
     <div class="card text-center">
       <div class="card-header">
@@ -19,8 +21,9 @@
         <%end%>
     </div>
   <%end%>
+  <div class="text-center"> <%= will_paginate%> </div><%= will_paginate%> 
   <%= link_to 'Create a new deck', new_deck_path,class:"badge badge-primary" %>
-  <%= link_to 'Tags', tags_path,class:"badge badge-primary" %>
+  <%= link_to 'Tags', tags_path,class:"badge badge-primary" %></div>
 </div>
   
   

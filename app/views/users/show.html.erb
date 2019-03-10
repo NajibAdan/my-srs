@@ -17,7 +17,7 @@
         </li>
         </ul>
         <%if current_user==@user%>
-          <%= link_to "Edit #{@user.name}", edit_user_registration_path(@user),class:"badge badge-primary" %>
+          <%= link_to "Edit #{@user.name}", edit_user_registration_path,class:"badge badge-primary" %>
         <%end%>
     </div>
  </div>

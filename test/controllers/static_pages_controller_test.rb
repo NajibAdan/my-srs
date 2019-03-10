@@ -22,4 +22,8 @@ class StaticPagesControllerTest < ActionDispatch::IntegrationTest
     get contact_path
     assert_response :success
   end
+  test 'should get help' do
+    get help_path
+    assert_response :success
+  end
 end

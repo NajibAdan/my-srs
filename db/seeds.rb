@@ -8,7 +8,7 @@ User.create!(
   password_confirmation: 'password',
   admin: true
 )
-100.times do
+50.times do
   User.create!(
     name: Faker::Name.name,
     email: Faker::Internet.email,
@@ -22,7 +22,7 @@ user = User.first
 user.options.create!(
   name: 'Original'
 )
-3.times do |i|
+30.times do |i|
   option = user.options.create!(
     name: "Wew #{i}",
     easyBonus: rand(120..150),
@@ -43,7 +43,7 @@ tags = []
   tags.push(Faker::Company.buzzword)
 end
 user.decks.count do |deck|
-  4.times do
+  3.times do
     card = deck.cards.create!(
       day_to_study: (Date.today + rand(0..2)).strftime('%d/%m/%Y'),
       interval: 1,

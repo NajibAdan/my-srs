@@ -12,9 +12,16 @@ chink:
   option: one
 
 nothing:
+  user: cray
   name: nothingness
   option: two
 
 nothingness:
+  user: cray
   name: nothing
   option: one
+
+test:
+  user: cray
+  name: test
+  option: two

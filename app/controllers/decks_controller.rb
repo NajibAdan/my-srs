@@ -42,7 +42,7 @@ class DecksController < ApplicationController
   end
 
   def index
-    @decks = current_user.decks.all
+    @decks = current_user.decks.paginate(page: params[:page], per_page: 10)
   end
 
   def destroy
@@ -58,6 +58,12 @@ class DecksController < ApplicationController
 
   def study
     @card = Deck.find(params[:id]).study.first
+    if @card.blank?
+      flash[:success] = 'No cards remaining'
+      redirect_to decks_path
+    else
+      @card
+    end
   end
 
   def study_receiver

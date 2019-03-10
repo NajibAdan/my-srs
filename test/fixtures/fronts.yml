@@ -1,0 +1,11 @@
+<%30.times do |i|%>
+front_<%=i%>:
+  text_field: 'Blew'
+  card: card_<%=i%>
+<%end%>
+
+<%10.times do |i|%>
+japan_front_<%=i%>:
+  text_field: 'Blew'
+  card: japan
+<%end%>

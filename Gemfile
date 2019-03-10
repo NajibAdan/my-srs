@@ -53,7 +53,6 @@ group :development do
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'web-console', '>= 3.3.0'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'faker'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
@@ -75,5 +74,7 @@ gem 'jquery-rails'
 gem 'bootstrap-sass',          '3.4.1'
 
 gem 'bootstrap-will_paginate', '1.0.0'
+gem 'faker'
 gem 'rubocop', require: false
 gem 'will_paginate', '3.1.6'
+gem "aws-sdk-s3", require: false

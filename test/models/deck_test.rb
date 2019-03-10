@@ -28,4 +28,8 @@ class DeckTest < ActiveSupport::TestCase
     another_random_card = @nothing.study.first
     assert_not random_card == another_random_card
   end
+
+  test 'study() function only returns due cards' do
+    assert decks(:test).study.blank?
+  end
 end

@@ -2,6 +2,8 @@
 
 # Card class
 class Card < ApplicationRecord
+  before_create :create_checks
+  before_update :update_checks
   # Relationship for deck
   belongs_to :deck
 
@@ -38,7 +40,20 @@ class Card < ApplicationRecord
       next_interval = interval * ease * (option.intervalModifier / 100)
       new_ease = ease
     end
-    day_to_study = Date.today + next_interval / 100
-    update_attributes(interval: next_interval, ease: new_ease, day_to_study: day_to_study)
+    next_interval < 100 ? next_interval = 100 : next_interval
+    day = Date.today + next_interval / 100
+    update_attributes!(day_to_study: day, interval: next_interval/100, ease: new_ease)
+  end
+
+  private
+
+  def create_checks
+    self.interval = 1
+    day_to_study.nil? ? self.day_to_study = Date.today : day_to_study
+    self.ease = 250
+  end
+
+  def update_checks
+    self.interval = 1 if interval < 1
   end
 end
