@@ -10,7 +10,7 @@ You can check the app at [heroku](https://mysrs.herokuapp.com). It might take a 
 
 ## Setting up the rails app
 
-1. First run ```bundle install``` to install gems needed
+1. First run ```bundle install --without production``` to install gems needed
 
 2. ```rails db:migrate && rails db:seed``` to seed the database with data
 
