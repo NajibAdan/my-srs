@@ -4,7 +4,7 @@
 
 Spaced Repetition is a learning system that incorporates increasing interval time between
 subsequent reviews of the previously learned material in order to exploit the psychological
-spacing effect. 
+spacing effect.
 
 You can check the app at [heroku](https://mysrs.herokuapp.com). It might take a while for the site to load at first since heroku is firing up the dyno.
 
