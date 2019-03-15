@@ -1,5 +1,6 @@
 # Spaced Repetition System
 
+[![Build Status](https://circleci.com/gh/NajibAdan/fuzzy-meme.svg)](https://circleci.com/gh/NajibAdan/fuzzy-meme)
 ## Introduction
 
 Spaced Repetition is a learning system that incorporates increasing interval time between
