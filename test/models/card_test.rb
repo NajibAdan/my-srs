@@ -27,9 +27,9 @@ class CardTest < ActiveSupport::TestCase
 
   test 'Set interval works' do
     day1 = @card_one.day_to_study
-    @card_one.set_interval('good')
+    @card_one.scheduler('good')
     assert_not day1 == @card_one.day_to_study
-    @card_two.set_interval('easy')
+    @card_two.scheduler('easy')
     assert_not @card_two.interval > 1
   end
 

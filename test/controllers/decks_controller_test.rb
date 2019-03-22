@@ -32,14 +32,14 @@ class DecksControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'Study should work' do
-    login_as users(:some_weird_guy)
+    login_as users(:cray)
     20.times do
       get study_path(id: @nothing.id)
       assert_response :success
-      card_to_study = @nothing.study.first
+      card_to_study = @nothing.due_cards.first
       post study_path, params: { card: { card_id: card_to_study.id,
                                          deck_id: @nothing.id }, commit: 'easy' }
-      card_to_study.set_interval('easy')
+      card_to_study.scheduler('easy')
       assert_redirected_to study_url(id: @nothing.id)
       assert card_to_study.day_to_study != Date.today
     end
