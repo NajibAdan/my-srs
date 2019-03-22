@@ -14,8 +14,8 @@
         <%= link_to 'View it', deck_path(deck), class:'btn btn-primary'  %>
       </div>
       <div class="card-footer text-muted">
-        <%if !deck.study.count.zero?%>
-          <%=pluralize(deck.study.count, "card")%> ready to be <%= link_to "studied", study_path(id: deck.id) %>
+        <%if !deck.due_cards.count.zero?%>
+          <%=pluralize(deck.due_cards.count, "card")%> ready to be <%= link_to "studied", study_path(id: deck.id) %>
         <%else%>
           <p> No cards to study in this deck</p>
         <%end%>

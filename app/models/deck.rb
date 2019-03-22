@@ -11,8 +11,8 @@ class Deck < ApplicationRecord
   validates :name, presence: true
   belongs_to :option
   # Returns due cards
-  def study
-    @study = cards.where(
+  def due_cards
+    @due_cards = cards.where(
       day_to_study: nil
     ).or(cards.where(
            day_to_study: Date.today

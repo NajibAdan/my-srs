@@ -6,7 +6,7 @@
     <p>Deck Options: <%= link_to @deck.option.name,options_path  %> </p>
     <%= link_to 'Want to checkout the cards?', cards_path(deck_id: @deck.id),class:"badge badge-primary"  %>
     <%= link_to 'Add a card', new_card_path(id: @deck.id),class:"badge badge-primary" %>
-    <%if @study.count > 0 %>
-        <p> <%=pluralize(@deck.study.count, "card")%> ready to be <%= link_to "studied", study_path(id: @deck.id) %></p>
+    <%if @due_cards.count > 0 %>
+        <p> <%=pluralize(@deck.due_cards.count, "card")%> ready to be <%= link_to "studied", study_path(id: @deck.id) %></p>
     <%end%>
 </div>

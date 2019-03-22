@@ -30,7 +30,7 @@ class User < ApplicationRecord
   def cards_to_be_studied
     sum = 0
     decks.each do |deck|
-      sum += deck.study.count
+      sum += deck.due_cards.count
     end
     sum
   end
