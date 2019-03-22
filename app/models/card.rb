@@ -27,7 +27,7 @@ class Card < ApplicationRecord
     self.tags = new_or_found_tags
   end
 
-  def set_interval(response)
+  def scheduler(response)
     option = deck.option
     case response
     when 'easy'

@@ -23,13 +23,13 @@ class DeckTest < ActiveSupport::TestCase
     end
   end
 
-  test 'study should provide a random card when called' do
-    random_card = @nothing.study.first
-    another_random_card = @nothing.study.first
+  test 'due_card should provide a random card when called' do
+    random_card = @nothing.due_cards.first
+    another_random_card = @nothing.due_cards.first
     assert_not random_card == another_random_card
   end
 
   test 'study() function only returns due cards' do
-    assert decks(:test).study.blank?
+    assert decks(:test).due_cards.blank?
   end
 end

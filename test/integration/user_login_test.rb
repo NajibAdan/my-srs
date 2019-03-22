@@ -38,10 +38,39 @@ class UserLoginTest < ActionDispatch::IntegrationTest
     assert_select 'a[href=?]', user_path(@user)
     delete destroy_user_session_path
     assert_redirected_to root_url
-    delete destroy_user_session_path
     follow_redirect!
     assert_select 'a[href=?]', new_user_session_path
     assert_select 'a[href=?]', destroy_user_session_path, count: 0
     assert_select 'a[href=?]', user_path(@user), count: 0
+  end
+
+  test 'login with invalid credentials' do
+    get user_session_path
+    post user_session_path params: { session: { email: 'foo@bar.com', password: 'incorrect' } }
+    assert_template 'devise/sessions/new'
+  end
+
+  test 'invalid signup information' do
+    get new_user_registration_path
+    assert_template 'devise/registrations/new'
+    assert_no_difference 'User.count' do
+      post users_path, params: { user: { name: '',
+                                         email: 'user@invalid',
+                                         password: 'foo',
+                                         password_confirmation: 'foobar' } }
+    end
+    assert_template 'devise/registrations/new'
+  end
+
+  test 'valid signup information' do
+    get new_user_registration_path
+    assert_template 'devise/registrations/new'
+    assert_difference 'User.count', 1 do
+      post users_path, params: { user: { name: 'Valid Name',
+                                         email: 'valid@email.com',
+                                         password: 'validpassword',
+                                         password_confirmation: 'validpassword' } }
+    end
+    assert_redirected_to root_url
   end
 end

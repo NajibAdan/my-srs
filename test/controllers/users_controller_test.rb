@@ -8,7 +8,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   def setup
     @user = users(:blank)
     @other_user = users(:blake)
-    @admin = users(:big_guy)
+    @admin = users(:admin)
   end
   test 'a user should sign up/log in first' do
     get user_path(1)

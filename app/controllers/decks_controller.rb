@@ -38,7 +38,7 @@ class DecksController < ApplicationController
 
   def show
     @deck = current_user.decks.find(params[:id])
-    @study = @deck.study
+    @due_cards = @deck.due_cards
   end
 
   def index
@@ -57,7 +57,7 @@ class DecksController < ApplicationController
   end
 
   def study
-    @card = Deck.find(params[:id]).study.first
+    @card = Deck.find(params[:id]).due_cards.first
     if @card.blank?
       flash[:success] = 'No cards remaining'
       redirect_to decks_path
@@ -67,7 +67,7 @@ class DecksController < ApplicationController
   end
 
   def study_receiver
-    Card.find(params['card']['card_id']).set_interval(params['commit'].downcase)
+    Card.find(params['card']['card_id']).scheduler(params['commit'].downcase)
     redirect_to action: 'study', id: params['card']['deck_id']
   end
 end
