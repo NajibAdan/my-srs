@@ -29,7 +29,14 @@ class DeckTest < ActiveSupport::TestCase
     assert_not random_card == another_random_card
   end
 
-  test 'study() function only returns due cards' do
-    assert decks(:test).due_cards.blank?
+  test 'due_card function only returns due cards' do
+    due_deck = decks(:nothing) # deck with due cards
+    no_due_deck = decks(:test) # deck without due cards
+    5.times do # loop through the assert 5 times
+      assert_not due_deck.due_cards.blank? # assert the queue is not empty
+      random_card = due_deck.due_cards.first
+      assert no_due_deck.due_cards.blank? # assert the queue is empty
+      assert random_card.day_to_study <= Date.today
+    end
   end
 end
