@@ -1,4 +1,4 @@
-# Spaced Repetition System [![Build Status](https://circleci.com/gh/NajibAdan/fuzzy-meme.svg)](https://circleci.com/gh/NajibAdan/fuzzy-meme)
+# Spaced Repetition System [![CircleCI](https://circleci.com/gh/NajibAdan/my-srs.svg?style=svg)](https://circleci.com/gh/NajibAdan/my-srs)
 
 ## Introduction
 
