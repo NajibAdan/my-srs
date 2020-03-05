@@ -41,11 +41,9 @@ jobs:
       - run: bundle exec rake db:create
       - run: bundle exec rake db:schema:load
       
-      # Testing something
-      - run: bundle exec
 
       # run tests!
       - run:
           name: run tests
           command: |
-            rake test
+            bundle exec rake test
